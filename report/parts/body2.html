@@ -1,0 +1,294 @@
+<section id="options">
+  <h2><span class="n">10</span>Стратегические варианты</h2>
+  <p class="lead">Четыре пути: от покупки готового до собственной платформы. Оценки по шкале 0–10, чем больше, тем лучше (для риска и затрат большее значение означает меньший риск и меньшие затраты).</p>
+  <div class="grid g4" id="optCards"></div>
+  <div class="callout"><b>Почему D.</b> Производственное ядро (деталировка, крепёж, раскрой, постпроцессоры ЧПУ) — это годы отраслевой экспертизы. У Базиса и К3 оно уже есть и привычно технологам. Выгоднее сначала выиграть «фронт» — салон, веб, дилеров и 1С, — а производство подключить через экспорт. Собственный CAM можно развивать постепенно: начать с простой деталировки типовых модулей и расширяться по мере роста выручки.</div>
+</section>
+
+<section id="arch">
+  <h2><span class="n">11</span>Целевая архитектура собственного продукта</h2>
+  <p class="lead">Мультиарендная (multi-tenant) веб-платформа. Единая <b>параметрическая модель заказа</b> служит источником правды для 3D, сметы, деталировки и 1С. Оранжевым выделены самые сложные компоненты.</p>
+  <div class="arch">
+    <div class="layer"><div class="lname">Клиенты<small>каналы работы</small></div><div class="boxes">
+      <div class="bx"><b>Салонный планировщик</b><span>браузер, режим киоска, сенсорный экран</span></div>
+      <div class="bx"><b>B2C-виджет для сайта</b><span>упрощённый конструктор, заявка с проектом</span></div>
+      <div class="bx"><b>Кабинет технолога</b><span>проверка, деталировка, экспорт</span></div>
+      <div class="bx"><b>Дилерский портал</b><span>наценки, заказы, статусы</span></div>
+      <div class="bx"><b>Замерщик (PWA / iOS)</b><span>обмер, фото, скан RoomPlan</span></div>
+      <div class="bx"><b>Админка каталога</b><span>материалы, цены, правила</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Движок в браузере<small>TypeScript</small></div><div class="boxes">
+      <div class="bx"><b>2D-редактор помещения</b><span>стены, проёмы, коммуникации, размеры (SVG/Canvas)</span></div>
+      <div class="bx"><b>3D-сцена</b><span>three.js + React Three Fiber, PBR, glTF</span></div>
+      <div class="bx hot"><b>Параметрическое ядро модулей</b><span>корпуса, фасады, столешницы, цоколь, карнизы; DSL правил</span></div>
+      <div class="bx hot"><b>Правила и валидация</b><span>коллизии, эргономика, технологические ограничения</span></div>
+      <div class="bx"><b>Автоплан (ИИ + правила)</b><span>генерация вариантов по размерам</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Сервисы<small>backend API</small></div><div class="boxes">
+      <div class="bx"><b>Проекты и версии</b><span>PostgreSQL (JSONB), история</span></div>
+      <div class="bx"><b>Каталог / PIM</b><span>декоры, фасады, фурнитура, техника, цены</span></div>
+      <div class="bx"><b>Прайсинг и КП</b><span>наценки, скидки, PDF-альбом</span></div>
+      <div class="bx hot"><b>Деталировка и раскрой</b><span>BOM, кромка, присадка, карты раскроя</span></div>
+      <div class="bx"><b>Облачный рендер</b><span>очередь + Blender Cycles на GPU, панорамы 360°</span></div>
+      <div class="bx"><b>CRM-лайт</b><span>воронка, задачи, статусы</span></div>
+      <div class="bx"><b>Тенанты, роли, биллинг</b><span>салоны, дилеры, фабрики</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Интеграции<small>внешние системы</small></div><div class="boxes">
+      <div class="bx hot"><b>1С (расширение .cfe)</b><span>HTTP-сервисы + OData: номенклатура, цены, остатки, заказы</span></div>
+      <div class="bx"><b>Базис / К3</b><span>экспорт деталей (CSV/XML), по возможности .b3d</span></div>
+      <div class="bx"><b>Раскрой / ЧПУ</b><span>CSV для раскроя, DXF, постпроцессоры</span></div>
+      <div class="bx"><b>Битрикс24 / amoCRM</b><span>лиды и сделки</span></div>
+      <div class="bx"><b>Мессенджеры</b><span>Telegram, MAX, e-mail: отправка проекта клиенту</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Инфраструктура<small>в РФ (152-ФЗ)</small></div><div class="boxes">
+      <div class="bx"><b>Российское облако</b><span>Yandex Cloud / VK Cloud / Selectel</span></div>
+      <div class="bx"><b>S3-хранилище ассетов</b><span>текстуры, glTF, рендеры (CDN)</span></div>
+      <div class="bx"><b>GPU-пул рендера</b><span>по требованию, автоскейлинг</span></div>
+      <div class="bx"><b>Наблюдаемость</b><span>логи, метрики, ошибки, бэкапы</span></div>
+    </div></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h4>Главный архитектурный принцип</h4><p class="small" style="margin:0">Хранить не «3D-картинку», а <b>семантическую модель</b>: модуль «тумба под мойку 600» с параметрами, правилами и составом деталей. 3D-вид, смета, чертёж и BOM для 1С — это <b>проекции</b> этой модели. Так устроены Базис и Winner, и именно этого нет в PRO100 и интерьерных планировщиках.</p></div>
+    <div class="card"><h4>Точность и единицы</h4><p class="small" style="margin:0">Все размеры хранить в целых миллиметрах (или десятых долях мм), а не в float-координатах сцены. Толщины плит, зазоры фасадов и кромка — параметры материала. Каждое правило модуля покрыть тестами на «золотых» эталонных проектах фабрики-пилота.</p></div>
+    <div class="card"><h4>Формат каталога</h4><p class="small" style="margin:0">Модули описывать декларативно: JSON/YAML-схема с параметрами, диапазонами, формулами деталей, вариантами наполнения и правилами совместимости. Тогда технолог фабрики сможет заводить ассортимент без программиста, а это критично для тиражирования.</p></div>
+  </div>
+</section>
+
+<section id="onec">
+  <h2><span class="n">12</span>Интеграция с 1С: как сделать правильно</h2>
+  <p class="lead">Платформа 1С:Предприятие 8.3 даёт два штатных механизма: автоматический REST-интерфейс по протоколу OData v3 и собственные HTTP-сервисы с поддержкой JWT <sup class="c">[47][48]</sup>. Для тиражируемого продукта оптимально поставлять <b>расширение конфигурации (.cfe)</b> со своими HTTP-сервисами. Оно не меняет типовую конфигурацию и не ломается при её обновлении.</p>
+  <div class="grid g-64">
+    <div class="card">
+      <h4>Потоки данных</h4>
+      <svg class="chart" viewBox="0 0 900 330" id="onecSvg"></svg>
+    </div>
+    <div class="card">
+      <h4>Практика внедрения</h4>
+      <ul class="tight">
+        <li><b>Целевые конфигурации:</b> 1С:УНФ (малые фабрики и салоны), 1С:УТ и КА (торговля и производство), 1С:ERP (крупные предприятия). Отраслевые: 1С-БАЗИС:Производство, 1С:Мебельное производство <sup class="c">[30][49]</sup>.</li>
+        <li><b>Справочник соответствий</b> «материал конфигуратора ↔ номенклатура 1С» (декор, толщина, характеристика) — самый трудоёмкий этап внедрения у каждого клиента.</li>
+        <li><b>Идемпотентность:</b> у каждого заказа свой GUID, поэтому повторная отправка не создаёт дубль. Статусы синхронизируются в обе стороны, как в кейсе Базис-Облако ↔ 1С у «Волгамебели» <sup class="c">[31]</sup>.</li>
+        <li><b>Облако и «коробка»:</b> 1С часто стоит на сервере клиента за NAT. Нужен коннектор с исходящим соединением (агент с long-polling или очередью), а не входящий вебхук.</li>
+        <li><b>Минимальный MVP:</b> выгрузка номенклатуры и цен в конфигуратор, загрузка «Заказа покупателя» со спецификацией и PDF. Этого достаточно, чтобы доказать ценность.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="oss">
+  <h2><span class="n">13</span>Готовые заготовки: open source и SDK</h2>
+  <p class="lead">Готового open-source «Базиса» не существует, но есть хорошие строительные блоки, которые заметно ускоряют разработку. Главный фильтр — лицензия. Клиентский JavaScript передаётся в браузер пользователя, поэтому GPL-код во фронтенде фактически обязывает раскрыть его исходники.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th style="min-width:200px">Компонент</th><th>Назначение</th><th>Лицензия</th><th style="min-width:170px">Зрелость</th><th style="min-width:340px">Как использовать</th><th>Вердикт</th></tr></thead>
+    <tbody>
+      <tr><td><b>three.js</b> + <b>React Three Fiber</b>, drei</td><td>3D-движок в браузере</td><td>MIT</td><td>Индустриальный стандарт</td><td>Основа 3D-сцены: PBR-материалы, glTF, камеры, выделение</td><td><span class="pill ok">база</span></td></tr>
+      <tr><td><b>Babylon.js</b> / <b>PlayCanvas</b></td><td>Альтернативные 3D-движки</td><td>Apache-2.0 / MIT</td><td>Высокая</td><td>Если нужен «игровой» редактор сцен или готовый инспектор; в остальных случаях — three.js</td><td><span class="pill wr">альтернатива</span></td></tr>
+      <tr><td><b>three-gpu-pathtracer</b></td><td>Фотореализм прямо в браузере</td><td>MIT</td><td>Активный, ~1,8 тыс. ★ <sup class="c">[50]</sup></td><td>«Фото» проекта на мощном ПК без сервера; превью перед облачным рендером</td><td><span class="pill ok">использовать</span></td></tr>
+      <tr><td><b>Blender (Cycles), headless</b></td><td>Серверный рендер 4K и 360°</td><td>GPL (на результаты рендера лицензия не распространяется)</td><td>Максимальная</td><td>Рендер-воркеры в Docker на GPU: сцена экспортируется в glTF и собирается скриптом на Python</td><td><span class="pill ok">использовать</span></td></tr>
+      <tr><td><b>blueprint3d</b> / <b>blueprint-js</b></td><td>2D-план + 3D-интерьер</td><td>MIT</td><td>blueprint3d давно не развивается (~2 тыс. ★); blueprint-js — ES6-порт <sup class="c">[51][52]</sup></td><td>Источник идей и кода для редактора стен и привязки предметов к стенам. Заимствовать выборочно, но не брать за фундамент</td><td><span class="pill wr">как референс</span></td></tr>
+      <tr><td><b>react-planner</b> (CVDLAB)</td><td>2D-план → 3D, каталог объектов</td><td>MIT</td><td>~1,45 тыс. ★, активность низкая (последний push — 2024) <sup class="c">[53]</sup></td><td>Архитектура каталога и свойств, SVG-редактор плана</td><td><span class="pill wr">как референс</span></td></tr>
+      <tr><td><b>replicad</b> + <b>OpenCascade.js</b></td><td>Точная B-rep-геометрия, STEP, фаски, фрезеровки</td><td>MIT / LGPL-2.1</td><td>Активные <sup class="c">[54][55]</sup></td><td>Сложные фасады (фрезеровка, радиусы), столешницы с вырезами, экспорт STEP/DXF для ЧПУ. Запускать в Web Worker</td><td><span class="pill ok">для v1+</span></td></tr>
+      <tr><td><b>Sweet Home 3D / SH3D JS</b></td><td>Готовый планировщик интерьеров</td><td>GPL-2.0+</td><td>Высокая (Java) <sup class="c">[56]</sup></td><td>Только как пример UX и источник свободных 3D-моделей (с атрибуцией). В код продукта не встраивать</td><td><span class="pill no">не как основа</span></td></tr>
+      <tr><td><b>SVGnest</b> и алгоритмы гильотинного раскроя</td><td>Нестинг и раскрой</td><td>MIT (SVGnest)</td><td>Средняя</td><td>Для ЛДСП нужен гильотинный раскрой с учётом кромки, направления текстуры и остатков — его проще написать самим. SVGnest пригодится для фигурных деталей</td><td><span class="pill wr">частично</span></td></tr>
+      <tr><td><b>Apple RoomPlan</b></td><td>Скан помещения по LiDAR</td><td>SDK iOS 16+</td><td>Доступен с 2022 г. <sup class="c">[57]</sup></td><td>Нативный модуль замерщика: стены, окна, двери, шкафы → USDZ → импорт в план. Точность проверять контрольными замерами</td><td><span class="pill ok">для v2</span></td></tr>
+      <tr><td><b>White-label / партнёрство</b>: PlanPlace, 3Dplan</td><td>Готовый конфигуратор</td><td>Коммерческая</td><td>Работающие продукты</td><td>Быстрый старт для одной фабрики, но собственного продукта и тиражирования так не получится</td><td><span class="pill wr">вариант B</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h4>Рекомендуемый стек</h4><p class="small" style="margin:0"><b>Фронтенд:</b> TypeScript, React, Vite, React Three Fiber, Zustand, SVG или Konva для 2D. <b>Бэкенд:</b> Node.js (NestJS/Fastify) или Python (FastAPI), PostgreSQL, Redis + BullMQ, S3. <b>Рендер:</b> Blender в контейнере на GPU. <b>1С:</b> расширение на встроенном языке + коннектор-агент.</p></div>
+    <div class="card"><h4>3D-контент — отдельная статья затрат</h4><p class="small" style="margin:0">Декоры плит — сканы или текстуры производителей; лицензию нужно уточнять у каждого. Фурнитура — CAD-данные Blum, Hettich, Boyard и др. Технику и декор проще купить в стоках или заказать у 3D-художников. На контент стоит заложить 15–25% бюджета.</p></div>
+    <div class="card"><h4>Чего избегать</h4><p class="small" style="margin:0">Unity WebGL как основы: тяжёлая загрузка и сложная интеграция с веб-интерфейсом. GPL-кода во фронтенде. Хранения размеров во float. Модулей, «зашитых» в код, вместо декларативного каталога.</p></div>
+  </div>
+</section>
+
+<section id="effort">
+  <h2><span class="n">14</span>Сложность и трудоёмкость собственной разработки</h2>
+  <p class="lead">Оценка в человеко-месяцах для продукта уровня v1: салон, производственный выход, 1С, облачный рендер, мульти-салон. Два сценария — классическая разработка и разработка с ИИ-ассистентами (Cursor, Claude Code и т. п.). ИИ сильнее всего ускоряет UI, CRUD и интеграционный код и слабее всего — геометрию, раскрой и доменные правила.</p>
+  <div class="grid g-64">
+    <div class="card"><div id="effortChart"></div></div>
+    <div class="card">
+      <h4>Итог</h4>
+      <div class="grid g2">
+        <div class="kpi" style="padding:0"><div class="v" id="effTotA">—</div><div class="l">чел.-мес., классика</div></div>
+        <div class="kpi" style="padding:0"><div class="v" id="effTotB" style="color:var(--accent)">—</div><div class="l">чел.-мес., с ИИ-ассистентами</div></div>
+      </div>
+      <h4 style="margin-top:18px">Сложность по компонентам (1–5)</h4>
+      <div id="cxList"></div>
+      <p class="small">Сложность 5 — высокий технический риск и необходимость отраслевой экспертизы. Технолог-мебельщик в команде обязателен.</p>
+    </div>
+  </div>
+  <h3>Сценарии команды и бюджета</h3>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Сценарий</th><th style="min-width:320px">Состав</th><th>MVP «Салон + 1С»</th><th>v1 «+ производство, рендер»</th><th>SaaS-готовность</th><th class="num">Бюджет до v1*</th><th>Риск</th></tr></thead>
+    <tbody>
+      <tr><td><b>Соло + ИИ</b></td><td>1 разработчик-основатель, фрилансеры для 3D-контента, консультант-технолог</td><td>6–8 мес.</td><td>18–24 мес.</td><td>от 30 мес.</td><td class="num">2–5 млн ₽</td><td><span class="pill no">высокий</span></td></tr>
+      <tr><td><b>Мини-команда</b></td><td>2 разработчика (3D-фронтенд; бэкенд и 1С) + технолог 0,5 ставки + 3D-художник 0,5 ставки + продукт и продажи (основатель)</td><td>4–5 мес.</td><td>10–12 мес.</td><td>16–18 мес.</td><td class="num">12–20 млн ₽</td><td><span class="pill wr">средний</span></td></tr>
+      <tr><td><b>Продуктовая команда</b></td><td>5–6 разработчиков, QA, дизайнер, технолог, DevOps 0,5 ставки, аккаунт-менеджер</td><td>3 мес.</td><td>7–9 мес.</td><td>12 мес.</td><td class="num">35–55 млн ₽</td><td><span class="pill ok">управляемый</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">* Допущение: полная стоимость инженера 300–450 тыс. ₽/мес (ФОТ, налоги, инструменты); инфраструктура и 3D-контент учтены укрупнённо. Для соло-сценария указаны только внешние расходы, без оценки времени основателя. Это ориентир, а не смета.</p>
+</section>
+
+<section id="roadmap">
+  <h2><span class="n">15</span>Дорожная карта (сценарий «мини-команда»)</h2>
+  <p class="lead">Поэтапный выпуск с обязательным пилотом на реальной фабрике и в салоне. Каждый этап заканчивается измеримым результатом.</p>
+  <div class="card"><div id="gantt"></div></div>
+  <div class="grid g4" style="margin-top:18px">
+    <div class="card"><h4>Этап 0 · Discovery</h4><p class="small" style="margin:0">Фабрика-пилот, 20–30 эталонных проектов, описание модульной системы, выгрузка номенклатуры из 1С, интервью с 5–10 продавцами. <b>Итог:</b> спецификация каталога и правил.</p></div>
+    <div class="card"><h4>Этап 1 · MVP «Салон»</h4><p class="small" style="margin:0">Помещение; прямые, угловые и П-образные кухни; фасады, декоры, столешницы, техника; смета, PDF-КП, заказ в 1С. <b>Итог:</b> проект за 20 минут или быстрее, 10+ реальных договоров.</p></div>
+    <div class="card"><h4>Этап 2 · v1 «Производство»</h4><p class="small" style="margin:0">Деталировка типовых модулей, кромка, присадка по шаблонам, экспорт в Базис/К3 и в раскрой, облачный рендер, мульти-салон. <b>Итог:</b> технологу больше не нужно перерисовывать проект.</p></div>
+    <div class="card"><h4>Этап 3 · SaaS и масштаб</h4><p class="small" style="margin:0">Мультиарендность, биллинг, дилерский портал, B2C-виджет, конструктор каталога для технолога, скан помещения и ИИ-автоплан. <b>Итог:</b> новые фабрики подключаются самостоятельно.</p></div>
+  </div>
+</section>
+
+<section id="economics">
+  <h2><span class="n">16</span>Экономика SaaS и тиражирование</h2>
+  <p class="lead">Иллюстративная модель на основе ценовых ориентиров рынка. Все цифры сегментации — допущения для проверки в интервью с клиентами, а не данные исследования.</p>
+  <div class="grid g3">
+    <div class="card">
+      <h4>Воронка рынка (оценка)</h4>
+      <div class="funnel" id="funnel"></div>
+      <p class="small">39 тыс. — данные Rusprofile <sup class="c">[3]</sup>. Остальные уровни — экспертные допущения.</p>
+    </div>
+    <div class="card">
+      <h4>Предлагаемые тарифы</h4>
+      <table>
+        <thead><tr><th>Тариф</th><th>Для кого</th><th class="num">Цена</th></tr></thead>
+        <tbody>
+          <tr><td><b>Салон</b></td><td>1 точка, до 3 продавцов, B2C-виджет</td><td class="num">6–9 тыс. ₽/мес</td></tr>
+          <tr><td><b>Фабрика</b></td><td>каталог, производственный экспорт, 1С, до 5 точек</td><td class="num">25–40 тыс. ₽/мес</td></tr>
+          <tr><td><b>Сеть</b></td><td>дилеры, наценки, SLA, BI</td><td class="num">от 60 тыс. ₽/мес</td></tr>
+          <tr><td><b>Внедрение</b></td><td>каталог, 1С, обучение</td><td class="num">150–600 тыс. ₽</td></tr>
+          <tr><td><b>Рендер</b></td><td>пакеты сверх лимита</td><td class="num">по объёму</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Ориентиры: PlanPlace 3,9–13,5 тыс. ₽/мес, Ceramic 3D ~10,5–14 тыс. ₽/мес, БАЗИС-Облако от 6,3 тыс. ₽/мес.</p>
+    </div>
+    <div class="card">
+      <h4>Иллюстрация выручки 3-го года</h4>
+      <div id="arrChart"></div>
+      <p class="small">Допущения: 150 салонов × 90 тыс. ₽/год + 25 фабрик × 420 тыс. ₽/год = ~24 млн ₽ ARR, плюс разовые внедрения ~5 млн ₽/год. Отток (~15% в год) не показан. Целевые метрики: окупаемость CAC — не дольше 12 месяцев, чистое удержание выручки (NRR) — не ниже 100% за счёт роста числа точек у фабрик.</p>
+    </div>
+  </div>
+  <div class="callout"><b>Каналы тиражирования:</b> (1) фабрики, подключающие свои дилерские сети, — один договор даёт десятки салонов; (2) поставщики плит и фурнитуры, которым выгодны готовые каталоги (совместный маркетинг); (3) партнёры-интеграторы 1С (франчайзи), продающие внедрение; (4) миграция пользователей PRO100 с импортом их библиотек.</div>
+</section>
+
+<section id="risks">
+  <h2><span class="n">17</span>Карта рисков</h2>
+  <div class="grid g-64">
+    <div class="card"><div id="riskMap"></div></div>
+    <div class="card">
+      <h4>Меры снижения</h4>
+      <table id="riskTbl"><thead><tr><th>#</th><th>Риск</th><th>Мера</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section id="vibe">
+  <h2><span class="n">18</span>Вайбкодинг: что реально, а что нет</h2>
+  <p class="lead">С ИИ-ассистентами один человек действительно может собрать впечатляющий прототип за несколько недель. Но продукт, по которому фабрика режет плиту, требует инженерной дисциплины: ошибка в 1 мм означает переделку фасада.</p>
+  <div class="grid g3">
+    <div class="card"><h4 style="color:var(--ok)">Хорошо получается с ИИ</h4><ul class="tight"><li>UI, формы, админки каталога, дашборды</li><li>3D-сцена, камера, материалы, выделение, drag-and-drop</li><li>CRUD API, авторизация, роли, генерация PDF</li><li>Каркас интеграции с 1С (HTTP-сервисы, сериализация)</li><li>Скрипты сборки сцен для Blender</li></ul></div>
+    <div class="card"><h4 style="color:#b58900">Получается под строгим контролем</h4><ul class="tight"><li>Параметрические модули и формулы деталей</li><li>Коллизии, привязки к стенам, углы и примыкания</li><li>Прайсинг со сложными наценками и скидками</li><li>Производительность больших сцен на слабых ПК</li><li>Безопасность мультиарендности</li></ul></div>
+    <div class="card"><h4 style="color:var(--bad)">Требует экспертизы и тестов</h4><ul class="tight"><li>Технология: зазоры, кромка, присадка, крепёж</li><li>Раскрой с учётом текстуры, остатков и станка</li><li>Постпроцессоры и выгрузка на станки с ЧПУ</li><li>Сопоставление номенклатуры 1С у разных клиентов</li><li>Юридические вопросы: лицензии контента, 152-ФЗ</li></ul></div>
+  </div>
+  <div class="callout"><b>Рабочий рецепт:</b> (1) доменная спецификация модулей в виде данных, а не прозы; (2) набор «золотых» проектов с эталонной деталировкой от технолога и автотесты, сверяющие BOM до миллиметра; (3) маленькие итерации и ревью каждого изменения ядра; (4) TypeScript в строгом режиме, линтеры, CI; (5) архитектуру и модель данных проектирует человек, а ИИ пишет реализацию.</div>
+</section>
+
+<section id="next">
+  <h2><span class="n">19</span>Следующие шаги (ближайшие 6–8 недель)</h2>
+  <div class="grid g2">
+    <div class="card"><ol class="tight">
+      <li><b>Выбрать фабрику-пилот</b> и 1–2 салона; договориться о доступе к каталогу, прайсу и копии базы 1С.</li>
+      <li><b>Взять демо и триалы</b> Базис-Салон/Облако, К3 Online (20 часов бесплатно), Ceramic 3D, PlanPlace (15 дней) и сделать в каждом один и тот же эталонный проект.</li>
+      <li><b>Провести 10–15 интервью</b> с продавцами, замерщиками и технологами; замерить время проекта и число переделок.</li>
+      <li><b>Формализовать модульную систему</b> пилота (20–40 базовых модулей) в JSON-схеме.</li>
+      <li><b>Собрать технический прототип</b> за 3–4 недели: стены, линия модулей, смена фасадов и декоров, смета, выгрузка заказа в тестовую 1С:УНФ.</li>
+    </ol></div>
+    <div class="card"><ol class="tight" start="6">
+      <li><b>Показать прототип</b> пяти фабрикам и собрать предзаказы или письма о намерениях (LOI) с ценой.</li>
+      <li><b>Принять решение</b> go/no-go и выбрать сценарий команды (раздел 14).</li>
+      <li><b>Проработать юридические вопросы:</b> товарный знак, лицензии текстур и моделей, хранение ПДн в РФ, перспективу включения в реестр отечественного ПО.</li>
+      <li><b>Определить производственный выход:</b> экспорт в Базис или К3 (в зависимости от того, чем пользуется пилот) либо собственная деталировка.</li>
+      <li><b>Спланировать MVP</b> на 4–5 месяцев с метриками: время проекта, конверсия проекта в договор, число ошибок, дошедших до производства.</li>
+    </ol></div>
+  </div>
+</section>
+
+<section id="sources">
+  <h2><span class="n">20</span>Источники</h2>
+  <p class="small">Данные собраны 25.09.2026. Вендоры меняют цены и условия, поэтому перед решениями сверяйтесь с актуальными прайсами. Маркетинговые показатели («рост конверсии», «число клиентов») приведены как заявления вендоров.</p>
+  <ol class="src">
+    <li>АМДПР / Proderevo: итоги 2025 г. — выпуск 547,6 млрд ₽, кухонная мебель −8,5% — <a href="https://bzbroker.ru/potoksss/tpost/jkb3c05et1-rinok-mebeli-rossii-2025-obzor-analitika">bzbroker.ru (перепечатка)</a></li>
+    <li>РБК Исследования рынков: мебель на маркетплейсах, итоги 2025 — <a href="https://marketing.rbc.ru/articles/16387/">marketing.rbc.ru</a></li>
+    <li>Коммерсантъ / Rusprofile: 39 тыс. мебельных компаний — <a href="https://www.kommersant.ru/doc/7833765">kommersant.ru</a></li>
+    <li>Т-Бизнес секреты / T-Data: продавцы мебели в 2025 г. — <a href="https://secrets.tbank.ru/trendy/mebelnyj-biznes-v-2025-godu/">secrets.tbank.ru</a></li>
+    <li>Прайс Ceramic 3D Бизнес — <a href="http://ru.ceramic3d.com/price">ru.ceramic3d.com/price</a></li>
+    <li>Модуль «Кухни» Ceramic 3D — <a href="http://ru.ceramic3d.com/products/kitchen-room/">ru.ceramic3d.com</a></li>
+    <li>Прайс-лист БАЗИС 2025 — <a href="https://www.bazissoft.ru/bazis-news/58-updates/2057-2025-bazissystem">bazissoft.ru</a>; реестр ПО — <a href="https://allsoft.ru/software/vendors/bazis-centr/kompleks-programm-sistemy-bazis/">allsoft.ru</a></li>
+    <li>БАЗИС-Облако, тарифы — <a href="https://baz-plus.ru/cloud/price">baz-plus.ru/cloud/price</a></li>
+    <li>PRO100: приостановка продаж в РФ — <a href="http://spb-pro100.ru/">spb-pro100.ru</a></li>
+    <li>К3-Мебель, прейскурант — <a href="https://k3-mebel.ru/price.html">k3-mebel.ru/price.html</a></li>
+    <li>К3-Мебель Online, почасовая оплата — <a href="https://k3-mebel.ru/downloads/free-version.html">k3-mebel.ru</a></li>
+    <li>PRO100: цены дилеров — <a href="https://pro100-kostroma.ru/">pro100-kostroma.ru</a>, <a href="https://megamaster.su/programma-pro100-dlja-3d-proektirovanija-obzor/">megamaster.su</a></li>
+    <li>bCAD, цены — <a href="https://www.bcad.ru/prices/">bcad.ru/prices</a></li>
+    <li>Cyncly Winner Flex — <a href="https://www.cyncly.com/products/winner-flex">cyncly.com</a>; сравнение Winner Design и Flex — <a href="https://winnerdesign.support.compusoftgroup.com/hc/en-gb/articles/46410456836881-Comparison-of-Winner-Design-and-Winner-Flex">support</a></li>
+    <li>PlanPlace, тарифы (ASAI Soft) — <a href="https://asai-soft.com/planplace/">asai-soft.com/planplace</a></li>
+    <li>PlanPlace, интеграция с БАЗИС и ASAI — <a href="https://planplace.online/">planplace.online</a></li>
+    <li>3Dplan — <a href="https://3dplan.io/">3dplan.io</a></li>
+    <li>UPlan — онлайн 3D-конструктор кухни (материалы сайта вендора)</li>
+    <li>Coohom Design-to-Manufacture — <a href="https://www.e.coohom.com/design-to-manufacture">e.coohom.com</a></li>
+    <li>Coohom Kitchen &amp; Bath — <a href="https://www.coohom.com/helpcenter/kitchen-bath-one-integrated-platform">coohom.com</a></li>
+    <li>Coohom AI Kitchen Auto-Layout (KBIS 2026) — <a href="https://blog.coohom.com/design-in-seconds-meet-coohoms-ai-kitchen-auto-layout-at-kbis-2026/">blog.coohom.com</a></li>
+    <li>3D Cloud AI Kitchen Designer — <a href="https://3dcloud.com/industries/3d-kitchen-designer/">3dcloud.com</a></li>
+    <li>Лемана ПРО: проектирование кухонь — <a href="https://lemanapro.ru/proekt-kuhni/">lemanapro.ru</a></li>
+    <li>IKEA Kreativ / Geomagical Labs — <a href="https://www.ingka.com/newsroom/ikea-launches-new-ai-powered-experience-empowering-customers-to-create-lifelike-room-designs/">ingka.com</a></li>
+    <li>Форум PROMEBELclub: «К-3 или Про-100» — <a href="https://promebelclub.ru/forum/showthread.php?t=7290">promebelclub.ru</a></li>
+    <li>Обзор программ проектирования мебели — <a href="https://inner.su/articles/programmy-dlya-proektirovaniya-mebeli-obzor/">inner.su</a></li>
+    <li>Планоплан — <a href="https://planoplan.com/ru/">planoplan.com</a></li>
+    <li>Remplanner, сравнение — <a href="https://remplanner.ru/comparison/">remplanner.ru</a></li>
+    <li>Исследование рынка мебели 2018–2029 — <a href="https://sponsr.ru/dbka/118928/Issledovanie_rynka_mebeli_v_Rossii_sadovaya_korpusnaya_i_kuhonnaya_mebel_20182029/">sponsr.ru</a></li>
+    <li>1С-БАЗИС: Производство — <a href="https://baz-plus.ru/1cprod">baz-plus.ru/1cprod</a></li>
+    <li>Кейс ITONE: обмен заказами 1С ↔ Базис-Облако — <a href="https://www.itone.ru/cases/avtomatizaciya-obmena-zakazami-mezhdu-1c-i-bazis-oblako/">itone.ru</a></li>
+    <li>Астра Конструктор Мебели — <a href="https://astrapro.software/">astrapro.software</a>, <a href="https://astra-km.ru/software/astra-konstruktor-mebeli/">astra-km.ru</a></li>
+    <li>Dataintelo: Kitchen &amp; Bath Design Software Market — <a href="https://dataintelo.com/report/kitchen-and-bath-design-software-market">dataintelo.com</a></li>
+    <li>Infinity Market Research: Furniture Design Software Market — <a href="https://infinitymarketresearch.com/report/furniture-design-software-market/17515">infinitymarketresearch.com</a></li>
+    <li>Визикон — <a href="https://www.visicon.ru/">visicon.ru</a></li>
+    <li>Cyncly Spaces Flex (материалы вендора) — <a href="https://www.cyncly.com/">cyncly.com</a></li>
+    <li>Cyncly Design Flex, цены — <a href="https://www.cyncly.com/en-AU/products/design-flex/pricing">cyncly.com</a></li>
+    <li>KitchenDraw — <a href="https://www.kitchendraw.com/ENG/index.asp">kitchendraw.com</a></li>
+    <li>imos iX 2025 — <a href="https://imos3d.co.nz/ix2025/">imos3d.co.nz</a></li>
+    <li>Microvellum — <a href="https://www.microvellum.com/">microvellum.com</a></li>
+    <li>Mozaik Software — <a href="https://www.mozaiksoftware.com/">mozaiksoftware.com</a></li>
+    <li>Polyboard — <a href="http://boole.eu/polyboard_eng.php">boole.eu</a></li>
+    <li>Roomle Rubens, тарифы — <a href="https://www.roomle.com/en/pricing">roomle.com</a></li>
+    <li>3D Cloud × Kingfisher — <a href="https://www.prnewswire.co.uk/news-releases/3d-cloud-tm-by-marxent-partners-with-kingfisher-to-deploy-3d-visualisation-configuration-and-room-planning-technology-803280920.html">prnewswire</a></li>
+    <li>Threekit: Kitchen &amp; Bath, цены — <a href="https://www.threekit.com/pricing">threekit.com</a></li>
+    <li>CAD Projekt K&amp;A: прайс CAD Decor / CAD Kuchnie (PDF вендора, 23.10.2025)</li>
+    <li>1С: REST-интерфейс (OData) — <a href="https://v8.1c.ru/platforma/rest-interfeys/">v8.1c.ru</a></li>
+    <li>1С: Руководство разработчика, гл. 17 «Интеграция с внешними системами» — <a href="https://its.1c.ru/db/v8325doc/bookmark/dev/TI000000783">its.1c.ru</a></li>
+    <li>1С:Мебельное производство (САЙФИЛД) — <a href="https://www.mebelfirm.ru/programs/ps-mebelnoe-proizvodstvo/">mebelfirm.ru</a></li>
+    <li>three-gpu-pathtracer — <a href="https://github.com/gkjohnson/three-gpu-pathtracer">github.com</a></li>
+    <li>blueprint3d — <a href="https://github.com/furnishup/blueprint3d">github.com</a></li>
+    <li>blueprint-js — <a href="https://github.com/aalavandhaann/blueprint-js/">github.com</a></li>
+    <li>react-planner — <a href="https://github.com/cvdlab/react-planner/">github.com</a></li>
+    <li>replicad — <a href="https://replicad.xyz/">replicad.xyz</a></li>
+    <li>OpenCascade.js — <a href="https://ocjs.org/docs/about">ocjs.org</a></li>
+    <li>Sweet Home 3D, лицензия — <a href="https://www.sweethome3d.com/license/">sweethome3d.com</a></li>
+    <li>Apple RoomPlan — <a href="https://developer.apple.com/augmented-reality/roomplan/">developer.apple.com</a></li>
+    <li>3D-конструктор «Народные кухни» — <a href="https://www.project.it-alttpp.ru/projects/2021/detail/1380/">project.it-alttpp.ru</a></li>
+    <li>BROSKO Planner — онлайн 3D-конструктор шкафов-купе (материалы сайта фабрики)</li>
+  </ol>
+  <div class="foot">Отчёт подготовлен по открытым источникам. Оценки трудоёмкости, бюджета, сегментации и функциональные баллы — экспертные допущения; их нужно проверить на пилоте и в интервью с клиентами.</div>
+</section>
+</main>
+</div>
+<script>
+/*SCRIPT*/
+</script>
+</body>
+</html>

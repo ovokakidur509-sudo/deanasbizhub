@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Конфигураторы кухонь и корпусной мебели: рынок, сравнение, стратегия собственного продукта</title>
+<style>
+:root{
+  --bg:#f4f6fa; --paper:#ffffff; --ink:#172033; --ink2:#4a5670; --muted:#7c879e; --line:#e3e8f0;
+  --navy:#0f1f3d; --navy2:#1b3163; --accent:#0fa3a3; --accent2:#f08a24; --ru:#2f6fed; --intl:#8b5cf6; --cn:#e0475b; --ok:#16a34a; --warn:#eab308; --bad:#dc2626;
+  --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 16px rgba(16,24,40,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55}
+a{color:var(--ru);text-decoration:none} a:hover{text-decoration:underline}
+.layout{display:grid;grid-template-columns:290px minmax(0,1fr);min-height:100vh}
+nav.toc{position:sticky;top:0;height:100vh;overflow:auto;background:var(--navy);color:#cfd8ea;padding:26px 18px 40px}
+nav.toc .brand{font-weight:800;color:#fff;font-size:15px;letter-spacing:.3px;margin-bottom:4px}
+nav.toc .sub{font-size:12px;color:#8fa0c4;margin-bottom:22px}
+nav.toc a{display:flex;gap:10px;color:#cfd8ea;font-size:13.5px;padding:7px 10px;border-radius:8px}
+nav.toc a span{color:#6f84b3;font-variant-numeric:tabular-nums;min-width:20px}
+nav.toc a:hover,nav.toc a.active{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
+nav.toc .grp{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#6f84b3;margin:18px 10px 6px}
+main{padding:0 44px 80px;max-width:1760px;width:100%;margin:0 auto}
+header.hero{margin:0 -44px 34px;padding:54px 56px 44px;background:linear-gradient(120deg,var(--navy) 0%,var(--navy2) 55%,#105e74 100%);color:#fff;position:relative;overflow:hidden}
+header.hero:after{content:"";position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(15,163,163,.35),transparent 65%)}
+.hero .kicker{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#8fe3e3;font-weight:700}
+.hero h1{font-size:40px;line-height:1.15;margin:10px 0 12px;max-width:1150px}
+.hero p{max-width:1100px;color:#d6e0f5;font-size:17px;margin:0}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;font-size:13px;color:#a9b8d8}
+.hero .meta b{color:#fff}
+section{margin:0 0 46px;scroll-margin-top:20px}
+h2{font-size:28px;margin:0 0 6px;display:flex;align-items:baseline;gap:14px}
+h2 .n{font-size:15px;color:var(--accent);font-weight:800;background:#e3f6f6;border-radius:8px;padding:2px 10px}
+.lead{color:var(--ink2);font-size:16.5px;margin:0 0 20px;max-width:1300px}
+h3{font-size:19px;margin:22px 0 10px}
+h4{font-size:15.5px;margin:0 0 8px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))} .g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.g-73{grid-template-columns:minmax(0,7fr) minmax(0,3fr)} .g-64{grid-template-columns:minmax(0,6fr) minmax(0,4fr)}
+@media (max-width:1400px){.g4,.g5{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:1100px){.layout{grid-template-columns:1fr}nav.toc{display:none}.g2,.g3,.g4,.g5,.g-73,.g-64{grid-template-columns:1fr}main{padding:0 18px 60px}header.hero{margin:0 -18px 26px;padding:36px 22px}}
+.kpi{padding:18px 20px}
+.kpi .v{font-size:32px;font-weight:800;letter-spacing:-.5px;color:var(--navy)}
+.kpi .l{font-size:13.5px;color:var(--ink2)}
+.kpi .s{font-size:11.5px;color:var(--muted);margin-top:6px}
+.kpi.acc{border-top:4px solid var(--accent)} .kpi.or{border-top:4px solid var(--accent2)} .kpi.bl{border-top:4px solid var(--ru)} .kpi.vi{border-top:4px solid var(--intl)}
+.callout{border-left:5px solid var(--accent);background:#ecfafa;border-radius:10px;padding:16px 20px;margin:16px 0}
+.callout.warn{border-color:var(--accent2);background:#fff5ea}
+.callout.red{border-color:var(--bad);background:#fdeeee}
+.callout b{color:var(--navy)}
+ul.tight,ol.tight{margin:6px 0 0;padding-left:20px} ul.tight li,ol.tight li{margin:5px 0}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:#eef2f8;color:var(--ink2);margin:2px 4px 2px 0;white-space:nowrap}
+.pill.ru{background:#e7efff;color:#1d4fc4}.pill.in{background:#f1ebff;color:#6d3fd8}.pill.cn{background:#fde8eb;color:#b8283b}
+.pill.ok{background:#e6f6ec;color:#11793a}.pill.wr{background:#fff4d6;color:#8a6300}.pill.no{background:#fde8e8;color:#b91c1c}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#f3f6fb;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2)}
+tr:hover td{background:#fafcff}
+.tblwrap{overflow:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.small{font-size:12.5px;color:var(--muted)}
+sup.c{font-size:10.5px;color:var(--ru);font-weight:700;margin-left:1px}
+.heat td.h{text-align:center;font-weight:700;font-size:13px;min-width:62px}
+.heat th.hd{font-size:11px;text-transform:none;letter-spacing:0;text-align:center;vertical-align:bottom;line-height:1.25;padding:10px 6px;min-width:62px}
+.heat tr:hover td.h{filter:brightness(.96)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin-top:10px;align-items:center}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;counter-reset:st;padding-top:12px}
+.flow .st{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 14px 12px;box-shadow:var(--shadow)}
+.flow .st:before{counter-increment:st;content:counter(st);position:absolute;top:-12px;left:14px;background:var(--navy);color:#fff;font-weight:800;font-size:12px;border-radius:999px;width:24px;height:24px;display:grid;place-items:center}
+.flow .st h4{margin-top:6px;font-size:14.5px}
+.flow .st p{margin:0;font-size:12.5px;color:var(--ink2)}
+.flow .tools{margin-top:8px}
+@media (max-width:1400px){.flow{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.bar{height:8px;border-radius:99px;background:#e9edf4;overflow:hidden;margin:4px 0 10px}
+.bar i{display:block;height:100%;border-radius:99px}
+.scoreRow{display:grid;grid-template-columns:130px 1fr 34px;gap:10px;align-items:center;font-size:12.5px;color:var(--ink2);margin:5px 0}
+.arch{display:grid;gap:10px}
+.arch .layer{display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:stretch}
+.arch .lname{background:var(--navy);color:#fff;border-radius:10px;padding:12px 14px;font-weight:700;font-size:14px;display:flex;flex-direction:column;justify-content:center}
+.arch .lname small{font-weight:400;color:#a9b8d8;font-size:11.5px}
+.arch .boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.arch .bx{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;box-shadow:var(--shadow)}
+.arch .bx b{display:block;font-size:13.5px;color:var(--navy)}
+.arch .bx span{color:var(--ink2);font-size:12px}
+.arch .bx.hot{border-color:#f5c48f;background:#fffaf3}
+.funnel .lvl{margin:0 auto 8px;color:#fff;border-radius:10px;padding:12px 16px;display:flex;justify-content:space-between;gap:10px;font-size:13.5px}
+.funnel .lvl b{font-size:17px;white-space:nowrap}
+svg text{font-family:inherit}
+.chart{width:100%;height:auto;overflow:visible;display:block}
+.tag-src{font-size:11.5px;color:var(--muted);margin-top:8px}
+.prod h4{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.prod .row{font-size:13px;color:var(--ink2);margin:3px 0}
+.prod .row b{color:var(--ink)}
+.prod .pros,.prod .cons{font-size:13px;margin:8px 0 0;padding-left:18px}
+.prod .pros li::marker{color:var(--ok);content:"+  "} .prod .cons li::marker{color:var(--bad);content:"–  "}
+.foot{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:18px;margin-top:40px}
+ol.src{font-size:13px;columns:2;column-gap:40px} ol.src li{margin:0 0 6px;break-inside:avoid}
+@media print{nav.toc{display:none}.layout{grid-template-columns:1fr}header.hero{margin:0}section{break-inside:avoid-page}}
+
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" id="toc">
+  <div class="brand">Исследование рынка</div>
+  <div class="sub">Конфигураторы кухонь и корпусной мебели · сентябрь 2026</div>
+  <div class="grp">Анализ рынка</div>
+  <a href="#summary"><span>01</span>Резюме для руководителя</a>
+  <a href="#market"><span>02</span>Контекст рынка</a>
+  <a href="#landscape"><span>03</span>Карта классов решений</a>
+  <a href="#russia"><span>04</span>Российские решения</a>
+  <a href="#intl"><span>05</span>Международные решения</a>
+  <a href="#matrix"><span>06</span>Функциональная матрица</a>
+  <a href="#prices"><span>07</span>Стоимость владения</a>
+  <a href="#journey"><span>08</span>Процесс продажи кухни</a>
+  <a href="#gaps"><span>09</span>Незанятые ниши</a>
+  <div class="grp">Собственный продукт</div>
+  <a href="#options"><span>10</span>Стратегические варианты</a>
+  <a href="#arch"><span>11</span>Целевая архитектура</a>
+  <a href="#onec"><span>12</span>Интеграция с 1С</a>
+  <a href="#oss"><span>13</span>Готовые заготовки</a>
+  <a href="#effort"><span>14</span>Сложность и трудоёмкость</a>
+  <a href="#roadmap"><span>15</span>Дорожная карта</a>
+  <a href="#economics"><span>16</span>Экономика SaaS</a>
+  <a href="#risks"><span>17</span>Риски</a>
+  <a href="#vibe"><span>18</span>Вайбкодинг: реалии</a>
+  <a href="#next"><span>19</span>Следующие шаги</a>
+  <a href="#sources"><span>20</span>Источники</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="kicker">Сравнительный анализ · Россия и мир</div>
+  <h1>Программы для проектирования и продажи кухонь и корпусной мебели: рынок, сравнение и стратегия собственного продукта с интеграцией 1С</h1>
+  <p>Какие программы используют продавцы в мебельных салонах и отделах кухонь DIY-сетей, чтобы по замерам клиента собрать кухню, показать её в 3D, подобрать фасады и декоры, посчитать цену и передать заказ на производство. Как устроен рынок, кто лидирует, где свободные ниши и сколько стоит сделать своё решение — от MVP до тиражируемого SaaS.</p>
+  <div class="meta">
+    <div>Дата: <b>25.09.2026</b></div>
+    <div>Охват: <b>≈25 решений из России и мира, 5 классов ПО</b></div>
+    <div>Метод: <b>открытые источники, прайс-листы вендоров, экспертная оценка</b></div>
+    <div>Цены: <b>по сайтам вендоров на дату сбора</b></div>
+  </div>
+</header>
+
+<section id="summary">
+  <h2><span class="n">01</span>Резюме для руководителя</h2>
+  <p class="lead">Российский рынок салонного проектирования кухонь держится на нескольких настольных Windows-системах, созданных 10–25 лет назад. После ухода PRO100 освободилась ниша простого и быстрого инструмента для продавца. Веб-решения, которые одновременно закрывают салон, производство и 1С, пока молодые и нишевые. В этом и состоит главное окно возможностей.</p>
+  <div class="grid g4">
+    <div class="card kpi acc"><div class="v">547,6 млрд ₽</div><div class="l">выпуск мебели в РФ в 2025 г. (+4,9% в деньгах)</div><div class="s">АМДПР по данным Росстата <sup class="c">[1]</sup></div></div>
+    <div class="card kpi or"><div class="v">≈39 тыс.</div><div class="l">мебельных компаний в РФ — потенциальная клиентская база</div><div class="s">Rusprofile, 2025 <sup class="c">[3]</sup></div></div>
+    <div class="card kpi bl"><div class="v">126–168 тыс. ₽</div><div class="l">в год стоит «Кухонный» пакет Ceramic 3D — ценовой ориентир для SaaS</div><div class="s">прайс вендора <sup class="c">[5]</sup></div></div>
+    <div class="card kpi vi"><div class="v">≈37–52 чел.-мес.</div><div class="l">трудоёмкость продукта уровня «салон + производство + 1С»</div><div class="s">оценка, раздел 14: с ИИ-ассистентами и без</div></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card">
+      <h4>Что происходит на рынке</h4>
+      <ul class="tight">
+        <li><b>Лидеры в РФ:</b> Базис (производство + салон + облако), К3-Мебель (производство, сложен для салона), Ceramic 3D (DIY и плитка, кухни — отдельный модуль), bCAD, Астра.</li>
+        <li><b>PRO100</b>, самый популярный салонный инструмент: польская Ecru <b>приостановила продажу лицензий в РФ</b> <sup class="c">[9]</sup>. Пользователи остаются на старых версиях.</li>
+        <li>Кухни по-прежнему продаются <b>офлайн, как проект</b>. Маркетплейсы растут за счёт мелкой мебели, а не гарнитуров <sup class="c">[2]</sup>.</li>
+        <li>В мире рынок уходит в облако, скан помещения с телефона, облачный рендер и автопланировку с ИИ (Cyncly, Coohom, 3D Cloud, imos) <sup class="c">[14][21][22][39]</sup>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Где окно возможностей</h4>
+      <ul class="tight">
+        <li><b>Веб-решение</b>, где всё в одном контуре: <i>салон → 3D и смета → договор → деталировка → раскрой/ЧПУ → 1С</i>, без Windows-ключей и установки.</li>
+        <li>Простой UX для продавца («кухня за 15–20 минут») и точные данные для технолога <b>в одной модели</b>.</li>
+        <li>Встроенный обмен с 1С (УНФ, УТ, КА, ERP) — главный запрос фабрик. Сейчас его решают штучными доработками интеграторов <sup class="c">[30][31]</sup>.</li>
+        <li>Дилерская сеть фабрики: свои наценки, общий каталог, приём заказов онлайн.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Рекомендация</h4>
+      <ul class="tight">
+        <li><b>Гибридная стратегия (вариант D):</b> сначала свой веб-конфигуратор для салона с интеграцией 1С. Производственный выход — через экспорт в Базис/К3 и в раскрой. Собственный CAM — позже, когда появится выручка.</li>
+        <li><b>MVP за 4–5 месяцев</b> командой из 2–3 человек (или за 6–8 месяцев в одиночку с ИИ). Обязательно с фабрикой-пилотом и её реальным каталогом.</li>
+        <li><b>Основа:</b> TypeScript + three.js/React Three Fiber (MIT), собственное параметрическое ядро модулей, облачный рендер на Blender Cycles. Код под GPL в клиентскую часть не брать.</li>
+        <li>Тиражирование как SaaS реально со 2-го года. Иллюстративная цель — ~24 млн ₽ ARR на 3-й год плюс выручка от внедрений (раздел 16).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <h2><span class="n">02</span>Контекст рынка</h2>
+  <p class="lead">В 2025 г. мебельная отрасль выросла в деньгах, но упала в штуках. Выпуск кухонной мебели сократился на 8,5% в единицах: сказались высокие ставки и охлаждение рынка жилья. В такой ситуации фабрике важнее поднять конверсию и средний чек, чем увеличить поток клиентов. Это прямой аргумент в пользу инструментов визуальных «проектных» продаж.</p>
+  <div class="grid g-64">
+    <div class="card">
+      <h4>Ключевые показатели мебельного рынка РФ</h4>
+      <div id="mktChart"></div>
+      <div class="tag-src">Источники: АМДПР/Росстат <sup class="c">[1]</sup>, Rusprofile/Коммерсантъ <sup class="c">[3]</sup>, T-Data <sup class="c">[4]</sup>, РБК Исследования рынков <sup class="c">[2]</sup>. У каждого показателя своя шкала.</div>
+    </div>
+    <div class="card">
+      <h4>Что это значит для конфигуратора</h4>
+      <ul class="tight">
+        <li><b>Кухня остаётся проектной офлайн-покупкой.</b> Для неё нужен замер и расчёт под размеры, поэтому российские фабрики здесь сильны: по оценкам, им принадлежит свыше 70% сегмента по стоимости <sup class="c">[29]</sup>.</li>
+        <li><b>Маркетплейсы забирают мелкую мебель:</b> продажи мебели на WB, Ozon и ЯМ в 2025 г. выросли в 1,7 раза, но крупные комплекты там почти не покупают <sup class="c">[2]</sup>. Салону нужно предлагать то, чего на маркетплейсе нет: проект под размеры.</li>
+        <li><b>Много мелких игроков:</b> около 39 тыс. компаний и ~38 тыс. продавцов мебели <sup class="c">[3][4]</sup>. Это длинный хвост клиентов для недорогого SaaS.</li>
+        <li><b>Импортозамещение ПО:</b> после ухода PRO100 и недоступности западных CAD покупатели ищут российские или локально поддерживаемые решения. Корпоративным клиентам важна запись в реестре отечественного ПО (она есть у Базиса и Планоплана <sup class="c">[7][27]</sup>).</li>
+      </ul>
+      <div class="callout warn" style="margin-bottom:0"><b>Глобальный рынок</b> ПО для проектирования кухонь и ванных агрегаторы оценивают в ~$3,8 млрд (2025, CAGR ~10%) <sup class="c">[33]</sup>, а «ПО для дизайна мебели» — в ~$0,86 млрд (CAGR ~3,8%) <sup class="c">[34]</sup>. Оценки сильно расходятся, поэтому их стоит считать ориентиром, а не фактом.</div>
+    </div>
+  </div>
+</section>
+
+<section id="landscape">
+  <h2><span class="n">03</span>Карта классов решений</h2>
+  <p class="lead">«Программа как у продавца в мебельном» на деле объединяет пять разных классов ПО. Их часто путают, хотя они решают разные задачи и стоят по-разному. Собственный продукт важно сразу позиционировать в правильном классе или на стыке классов.</p>
+  <div class="grid g5">
+    <div class="card"><h4>A · Салонные планировщики</h4><p class="small" style="margin:0 0 8px">Продажа при клиенте: помещение, модули, фасады, цвета, 3D, смета, КП.</p><span class="pill ru">Ceramic 3D Кухни</span><span class="pill ru">Базис-Салон</span><span class="pill ru">К3-Салон</span><span class="pill ru">bCAD Салон</span><span class="pill in">PRO100</span><span class="pill in">Winner Flex</span><span class="pill in">2020 Design</span><span class="pill in">KitchenDraw</span></div>
+    <div class="card"><h4>B · Конструкторские CAD/CAM</h4><p class="small" style="margin:0 0 8px">Деталировка, крепёж, кромка, присадка, раскрой, выгрузка на ЧПУ.</p><span class="pill ru">Базис-Мебельщик</span><span class="pill ru">К3-Мебель ПКМ</span><span class="pill ru">bCAD Мебель</span><span class="pill ru">Астра</span><span class="pill in">imos iX</span><span class="pill in">Cabinet Vision</span><span class="pill in">Microvellum</span><span class="pill in">Mozaik</span><span class="pill in">Polyboard</span></div>
+    <div class="card"><h4>C · Веб-конфигураторы B2B2C</h4><p class="small" style="margin:0 0 8px">Встраиваются на сайт и в дилерскую сеть, считают цену, принимают заказы.</p><span class="pill ru">PlanPlace</span><span class="pill ru">3Dplan</span><span class="pill ru">UPlan</span><span class="pill in">Roomle Rubens</span><span class="pill in">Threekit</span><span class="pill in">3D Cloud</span><span class="pill cn">Coohom Enterprise</span></div>
+    <div class="card"><h4>D · Интерьерные планировщики</h4><p class="small" style="margin:0 0 8px">Планировка квартиры, расстановка, отделка. Мебель в них — «коробки» без технологии.</p><span class="pill ru">Планоплан</span><span class="pill ru">Remplanner</span><span class="pill ru">Визикон</span><span class="pill in">Planner 5D</span><span class="pill in">Sweet Home 3D</span><span class="pill cn">Coohom/Homestyler</span></div>
+    <div class="card"><h4>E · Учёт и ERP</h4><p class="small" style="margin:0 0 8px">Заказы, склад, закупки, себестоимость, производство, деньги.</p><span class="pill ru">1С:УНФ</span><span class="pill ru">1С:КА / ERP</span><span class="pill ru">1С-БАЗИС:Производство</span><span class="pill ru">1С:Мебельное производство</span><span class="pill ru">1С-Рарус: Мебельное предприятие</span></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h4>Карта позиционирования: от «продажи» к «производству», от «десктопа» к «вебу и облаку»</h4>
+    <div id="posMap"></div>
+    <div class="legend"><span><i style="background:var(--ru)"></i>Россия</span><span><i style="background:var(--intl)"></i>Европа / США</span><span><i style="background:var(--cn)"></i>Китай</span><span><i style="background:none;border:2px dashed var(--accent2)"></i>Незанятая зона — целевая позиция собственного продукта</span><span class="small">Размер круга — условная рыночная значимость. Координаты — экспертная оценка по открытым данным.</span></div>
+  </div>
+</section>
+
+<section id="russia">
+  <h2><span class="n">04</span>Российский рынок: основные решения</h2>
+  <p class="lead">Ниже — профили решений, которые реально встречаются в салонах, на фабриках и в отделах кухонь DIY-сетей. Цены взяты из официальных прайсов на дату исследования, без НДС, если не указано иное.</p>
+  <div class="grid g3">
+    <div class="card prod">
+      <h4>Ceramic 3D Бизнес + «Кухни» <span class="pill ru">Россия</span></h4>
+      <div class="row"><b>Класс:</b> A (салон); продукт вырос из продаж плитки и сантехники</div>
+      <div class="row"><b>Модель:</b> годовая подписка; «Кухни» работают только вместе с «Бизнес» и «Облачным рендером»</div>
+      <div class="row"><b>Цена:</b> пакет «Кухонный» 168 000 ₽ за 1-й год, 126 000 ₽ со 2-го <sup class="c">[5]</sup></div>
+      <ul class="pros"><li>Фотореализм и облачный рендер 8K, авторакурс, автосвет</li><li>Фильтры фасадов, ручек и столешниц, автосборка тумб, альбом чертежей, схема сборки <sup class="c">[5][6]</sup></li><li>Воронка продаж, аналитика, обучение продавцов; заявлены интеграции с 1С и Битрикс</li><li>Узнаваемый бренд в DIY-рознице; вендор заявляет «более 12 000 клиентов»</li></ul>
+      <ul class="cons"><li>Ядро — отделка и плитка, кухонный модуль вторичен по технологичности</li><li>Нет полноценной производственной деталировки, раскроя и ЧПУ</li><li>Дорого для небольшого кухонного салона</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>Система БАЗИС <span><span class="pill ru">Россия</span><span class="pill ok">реестр ПО</span></span></h4>
+      <div class="row"><b>Класс:</b> B + A + облако — сквозной комплекс для фабрики</div>
+      <div class="row"><b>Модель:</b> бессрочные лицензии + годовое обновление ≈10% от цены; облако по подписке</div>
+      <div class="row"><b>Цена (2025):</b> Мебельщик 96 000 ₽, Салон 37 000 ₽, Раскрой 31 000 ₽, ЧПУ 62 000 ₽; БАЗИС-Облако от 6 300 ₽ за 30 дней <sup class="c">[7][8]</sup></div>
+      <ul class="pros"><li>Фактический отраслевой стандарт для технологов корпусной мебели</li><li>Автоматическая расстановка крепежа, чертежи, раскрой, ЧПУ, упаковка, склад</li><li>1С-БАЗИС:Производство и готовые кейсы обмена Базис-Облако ↔ 1С <sup class="c">[30][31]</sup></li><li>Облако для сети салонов с веб-просмотром и API</li></ul>
+      <ul class="cons"><li>Десктоп под Windows, ключи защиты, высокий порог входа</li><li>Визуализация и салонный UX уступают специализированным планировщикам <sup class="c">[26]</sup></li><li>Проприетарные форматы (.b3d)</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>К3-Мебель <span class="pill ru">Россия</span></h4>
+      <div class="row"><b>Класс:</b> B + A; разработчик — НВЦ «ГеоС» (Нижний Новгород)</div>
+      <div class="row"><b>Модель:</b> бессрочная лицензия на ключе или онлайн-версия с почасовой оплатой</div>
+      <div class="row"><b>Цена:</b> «Салон» 35 000 ₽, «Профессионал» 78 000 ₽, «Эксперт 2» (с раскроем и ЧПУ) 142 000 ₽; онлайн 70–80 ₽/ч; облачный рендер от 699 ₽/мес <sup class="c">[10][11]</sup></div>
+      <ul class="pros"><li>Твердотельное ядро, открытые средства настройки, собственные параметрические объекты</li><li>Проверка пересечений, выдвижения ящиков, кромки и крепежа</li><li>Акция trade-in −30% для перехода с других систем, в т. ч. с Базиса</li></ul>
+      <ul class="cons"><li>Сложен для продавца в салоне — это отмечают сами пользователи <sup class="c">[25]</sup></li><li>Устаревший UX, только Windows</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>PRO100 <span><span class="pill in">Польша</span><span class="pill no">продажи в РФ приостановлены</span></span></h4>
+      <div class="row"><b>Класс:</b> A (салон, интерьер, простая деталировка)</div>
+      <div class="row"><b>Модель:</b> бессрочная лицензия (раньше ~77–110 тыс. ₽ за v6 PROF или Салон) <sup class="c">[12]</sup></div>
+      <div class="row"><b>Статус:</b> Ecru Software приостановила продажу и обновление лицензий в России; дилеры поддерживают старые версии <sup class="c">[9]</sup></div>
+      <ul class="pros"><li>Эталон скорости и простоты для салона: проект примерно за 20 минут</li><li>Мгновенная визуализация любых изменений</li></ul>
+      <ul class="cons"><li>Не различает назначение деталей: корпус и ручка для программы одинаковы <sup class="c">[26]</sup></li><li>Нет развития и легальной покупки в РФ, поэтому пользователи уходят к другим вендорам</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>bCAD Мебель / Салон <span class="pill ru">Россия</span></h4>
+      <div class="row"><b>Класс:</b> A + B</div>
+      <div class="row"><b>Цена:</b> «Салон/Витрина» 40 000 ₽, «Мебель» 80 000 ₽, «Мебель Про» 100 000 ₽; дополнительные места со скидкой <sup class="c">[13]</sup></div>
+      <ul class="pros"><li>Доступная цена, собственный раскрой bCUT, модули передачи данных</li><li>Работает на рынках РФ, Казахстана и Узбекистана</li></ul>
+      <ul class="cons"><li>Небольшая экосистема и сообщество</li><li>Визуализация и UX не на уровне лидеров</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>PlanPlace <span><span class="pill ru">Россия</span><span class="pill ok">веб</span></span></h4>
+      <div class="row"><b>Класс:</b> C (веб-конфигуратор для салона и сайта); интегратор — ASAI Soft</div>
+      <div class="row"><b>Модель:</b> подписка, любое число пользователей</div>
+      <div class="row"><b>Цена:</b> BASE 3 900 ₽/мес, PRO 13 500 ₽/мес, BUSINESS — индивидуально <sup class="c">[15]</sup></div>
+      <ul class="pros"><li>Работа в браузере, встраивание на сайт, автоматический расчёт цен, дилерские наценки</li><li>Выгрузка редактируемого .b3d в БАЗИС-Мебельщик с присадкой и кромкой, списки для ASAI.Cut/Nest <sup class="c">[16]</sup></li></ul>
+      <ul class="cons"><li>Молодой продукт с небольшой базой внедрений</li><li>Производственная часть опирается на внешние программы</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>3Dplan / UPlan <span><span class="pill ru">Россия</span><span class="pill ok">веб</span></span></h4>
+      <div class="row"><b>Класс:</b> C (онлайн-конфигураторы модульных кухонь)</div>
+      <div class="row"><b>Цена:</b> индивидуально (3Dplan Pro), подписка (UPlan) <sup class="c">[17][18]</sup></div>
+      <ul class="pros"><li>3Dplan: заявлена «глубокая интеграция» с 1С, CRM и Базис-Мебельщиком, проверка наличия комплектующих</li><li>UPlan: автоматическая планировка по опроснику без ручной расстановки, VR-режим</li></ul>
+      <ul class="cons"><li>Ориентированы на модульные кухни, а не на изготовление под заказ</li><li>Мало публичных кейсов и прозрачных цен</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>Планоплан / Remplanner <span class="pill ru">Россия</span></h4>
+      <div class="row"><b>Класс:</b> D (дизайн интерьера, планировки)</div>
+      <div class="row"><b>Модель:</b> подписка для дизайнеров; Планоплан в реестре российского ПО <sup class="c">[27]</sup></div>
+      <ul class="pros"><li>Облачный рендер, виртуальные туры, 8 000+ моделей от производителей РФ и СНГ</li><li>Remplanner: полный альбом чертежей для ремонта и смета <sup class="c">[28]</sup></li></ul>
+      <ul class="cons"><li>Нет технологии корпусной мебели и связи с производством</li><li>Интересны скорее как партнёры для «интерьерного» контекста, чем как конкуренты</li></ul>
+    </div>
+    <div class="card prod">
+      <h4>Прочие решения и собственные разработки ритейла</h4>
+      <div class="row"><b>Астра Конструктор Мебели / Раскрой</b> — CAD и раскрой с большим набором постпроцессоров ЧПУ; цены в EUR и грн, для РФ есть юрисдикционный риск <sup class="c">[32]</sup></div>
+      <div class="row"><b>Визикон</b> — простой 3D-планировщик помещений <sup class="c">[35]</sup></div>
+      <div class="row"><b>Лемана ПРО (ex-Леруа Мерлен)</b> — онлайн-планировщик кухонь на сайте, бесплатное проектирование в магазине, собственный бренд Delinia ID, 48+ фабрик-партнёров <sup class="c">[23]</sup></div>
+      <div class="row"><b>Фабрики и сети</b> часто заказывают собственные веб-конструкторы у подрядчиков (например, 3D-конструктор «Народные кухни», BROSKO Planner) <sup class="c">[58][59]</sup>. Это подтверждает спрос на заказную разработку и white-label.</div>
+    </div>
+  </div>
+</section>
+
+<section id="intl">
+  <h2><span class="n">05</span>Международные решения</h2>
+  <p class="lead">Мировые лидеры задают ориентиры по функциональности: облако, мульти-магазин, каталоги производителей, скан помещения, облачный рендер, автопланировка с ИИ. В России большинство из них напрямую не купить из-за санкций, платежей и требований к локализации данных. Но изучить их как бенчмарк при проектировании своего продукта полезно.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th style="min-width:190px">Решение</th><th>Страна</th><th>Класс</th><th style="min-width:360px">Ключевые возможности</th><th style="min-width:210px">Модель и цена</th><th style="min-width:150px">Доступность в РФ</th></tr></thead>
+    <tbody>
+      <tr><td><b>Cyncly: Winner Flex, Design Flex (2020 Design), Spaces Flex</b></td><td>Великобритания / США</td><td>A (+B)</td><td>Мировой лидер ритейл-проектирования, 60 000+ профессионалов. Облако, мульти-магазин, заказы поставщикам, BI, Cyncly Scan, рендер Cycles; в Spaces Flex — AI-сценарии для покупателя <sup class="c">[14][36]</sup></td><td>Design Flex: $1 895–2 995 в год за место <sup class="c">[37]</sup>; Winner Flex — по запросу</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>KitchenDraw</b></td><td>Франция</td><td>A</td><td>1 492 каталога производителей, «умные» каталоги с бизнес-правилами, VR (Meta Quest), EDI-заказы, CSV-списки для раскроя, SDK и REST API для ERP <sup class="c">[38]</sup></td><td>Почасовая оплата: 3,90 €/ч (PRO), 2,90 €/ч (сети производителей)</td><td><span class="pill wr">затруднена</span></td></tr>
+      <tr><td><b>imos iX (HOMAG)</b></td><td>Германия</td><td>B + A</td><td>Промышленный CAD/CAM для фабрик. iX NET — веб-планирование и продажи; генеративный AI-рендер по «белой» планировке, облачный рендер, подписочная модель с версии 2025 <sup class="c">[39]</sup></td><td>Enterprise, подписка или лицензия</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>Cabinet Vision / Microvellum</b></td><td>США</td><td>B</td><td>Автоматизация производства корпусной мебели. Microvellum работает поверх AutoCAD/BricsCAD: гибкий, но сложный <sup class="c">[40]</sup></td><td>Enterprise</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>Mozaik</b></td><td>США</td><td>B (+A)</td><td>«От дизайна до G-кода» для небольших цехов: оптимизатор, нестинг, этикетки, облачный рендер <sup class="c">[41]</sup></td><td>$125 / $225 / $325 в месяц — хороший ориентир SaaS-цены для производства</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>Polyboard (Boole &amp; Partners)</b></td><td>Франция</td><td>B</td><td>Параметрическая корпусная мебель под размер, раскрой OptiCut, сметы <sup class="c">[42]</sup></td><td>Бессрочная лицензия</td><td><span class="pill wr">затруднена</span></td></tr>
+      <tr><td><b>Coohom / Kujiale</b></td><td>Китай</td><td>A + C + D</td><td>Облачная платформа: по данным вендора 10 млн+ пользователей; рендер до 16K примерно за минуту, параметрические шкафы, интеграция с CAM (HOMAG iX, imos, Cabinet Vision, Microvellum), AI Kitchen Auto-Layout (KBIS 2026). Корейская Hanssem: 5 100 дизайнеров в 900 салонах <sup class="c">[19][20][21]</sup></td><td>От $29/мес; Enterprise по запросу</td><td><span class="pill wr">с рисками</span><div class="small">данные за рубежом, платежи</div></td></tr>
+      <tr><td><b>Roomle Rubens</b></td><td>Австрия</td><td>C</td><td>Конфигуратор «Full Logic»: модульная и параметрическая логика, AR без приложения, BOM, Price API, ERP/CRM/CAD-интеграции, SDK <sup class="c">[43]</sup></td><td>Тарифы Level 1–4, Enterprise</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>3D Cloud (Marxent)</b></td><td>США</td><td>C</td><td>Room Planner для Lowe's и Kingfisher (Castorama, B&amp;Q), Design from Photo, скан помещения; анонсирован AI Kitchen Design Agent с проверкой по правилам NKBA <sup class="c">[22][44]</sup></td><td>Enterprise-пакеты</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>Threekit</b></td><td>США</td><td>C</td><td>Visual commerce: 3D, AR, «Virtual Photographer», Kitchen &amp; Bath Suite, динамические цены <sup class="c">[45]</sup></td><td>Индивидуально</td><td><span class="pill no">нет</span></td></tr>
+      <tr><td><b>IKEA Kreativ</b></td><td>Швеция / США</td><td>D (собственная разработка)</td><td>AI-скан комнаты по фото, удаление старой мебели, расстановка. Технология Geomagical Labs, которую Ingka купила в 2020 г. <sup class="c">[24]</sup></td><td>Внутренняя разработка</td><td>—</td></tr>
+      <tr><td><b>CAD Kuchnie / CAD Decor</b></td><td>Польша</td><td>A</td><td>Кухни, раскрой плит, плитка, рендер, панорамы 360° <sup class="c">[46]</sup></td><td>Бессрочно ~1 500–2 700 €</td><td><span class="pill wr">затруднена</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><b>Что стоит перенять:</b> у Winner Flex — связку «дизайн → смета → заказ поставщику → монтаж» и мульти-магазин; у KitchenDraw — «умные» каталоги с правилами и оплату за использование; у Coohom — облачный рендер за минуту и автопланировку; у Roomle — открытые API цен и заказов; у Mozaik — прозрачную SaaS-цену для цеха.</div>
+</section>
+
+<section id="matrix">
+  <h2><span class="n">06</span>Функциональная матрица</h2>
+  <p class="lead">Экспертная оценка по открытым материалам вендоров: 0 — нет, 1 — базово, 2 — хорошо, 3 — сильная сторона. Столбец «Σ» — сумма без весов. Из матрицы видно, что ни у одного российского игрока нет высокой оценки одновременно по салонному UX, вебу и связке «производство + 1С».</p>
+  <div class="tblwrap heat"><table id="heat"></table></div>
+  <div class="legend"><span><i style="background:#f3f5f9;border:1px solid #e3e8f0"></i>0</span><span><i style="background:#cdeeee"></i>1</span><span><i style="background:#7fd3d3"></i>2</span><span><i style="background:#0fa3a3"></i>3</span><span class="small">Оценки — субъективные ориентиры для позиционирования, а не результат лабораторного тестирования. Для 3Dplan и Ceramic 3D интеграция с 1С оценена по заявлениям вендоров.</span></div>
+</section>
+
+<section id="prices">
+  <h2><span class="n">07</span>Стоимость владения</h2>
+  <p class="lead">Стоимость владения одним рабочим местом за три года, тыс. ₽, по публичным прайсам. Функциональность пакетов различается, поэтому график показывает ценовые «полки» рынка, а не точный паритет.</p>
+  <div class="grid g-73">
+    <div class="card"><div id="tcoChart"></div><div class="tag-src">Расчёт: бессрочная лицензия + годовые обновления за 2-й и 3-й годы; подписки — × 3 года. Источники: [5][7][8][10][13][15]. PlanPlace BASE — годовой тариф 32 800 ₽.</div></div>
+    <div class="card">
+      <h4>Выводы по цене</h4>
+      <ul class="tight">
+        <li><b>Полка «салон»:</b> 35–45 тыс. ₽ разово (К3, Базис, bCAD) или 40–100 тыс. ₽ за 3 года по подписке.</li>
+        <li><b>Полка «продажа + визуализация» (Ceramic 3D):</b> ~420 тыс. ₽ за 3 года. Рынок готов платить за конверсию и рендер.</li>
+        <li><b>Полка «фабрика»:</b> 130–250 тыс. ₽ за место конструктора или технолога плюс внедрение.</li>
+        <li>Для своего SaaS разумно брать <b>6–9 тыс. ₽/мес за салон</b> и <b>25–40 тыс. ₽/мес за фабрику</b> с производственным модулем и 1С (для сетей — от 60 тыс.), плюс разовую плату за внедрение каталога.</li>
+      </ul>
+      <div class="callout warn" style="margin-bottom:0">Международные ориентиры: Cyncly Design Flex — $1 895–2 995 в год за место, Mozaik — $125–325 в месяц, KitchenDraw — 2,9–3,9 € в час.</div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <h2><span class="n">08</span>Процесс продажи кухни и роль ПО на каждом шаге</h2>
+  <p class="lead">Типичный путь заказа кухни под размер. Сегодня он почти всегда проходит через 2–4 разные программы с ручным переносом данных, и на каждом стыке теряется время и появляются ошибки. Единый контур — главная ценность нового продукта.</p>
+  <div class="flow">
+    <div class="st"><h4>Заявка и первичный расчёт</h4><p>Сайт, салон, DIY-отдел. Калькулятор «кухня по размерам», быстрый прайс.</p><div class="tools"><span class="pill">Веб-виджет</span><span class="pill">CRM</span></div></div>
+    <div class="st"><h4>Замер</h4><p>Стены, проёмы, стояки, розетки, перепады. Сейчас — рулетка и бумага, в перспективе — скан LiDAR.</p><div class="tools"><span class="pill">Планшет / PWA</span><span class="pill">RoomPlan</span></div></div>
+    <div class="st"><h4>Проект при клиенте</h4><p>Модули, фасады, столешница, техника, ручки, декоры. 3D, варианты, рендер.</p><div class="tools"><span class="pill">Салонный планировщик</span></div></div>
+    <div class="st"><h4>Смета, КП, договор</h4><p>Цена по прайсу и наценкам, скидки, рассрочка, PDF-альбом, подпись.</p><div class="tools"><span class="pill">Планировщик</span><span class="pill">1С</span></div></div>
+    <div class="st"><h4>Технологическая проработка</h4><p>Деталировка, крепёж, кромка, присадка, проверка, чертежи.</p><div class="tools"><span class="pill">Базис / К3</span></div></div>
+    <div class="st"><h4>Производство</h4><p>Раскрой, ЧПУ, этикетки, закупка фасадов и фурнитуры, планирование.</p><div class="tools"><span class="pill">Раскрой</span><span class="pill">1С</span><span class="pill">ЧПУ</span></div></div>
+    <div class="st"><h4>Доставка, монтаж, сервис</h4><p>Схема сборки, чек-лист монтажа, рекламации, повторные продажи.</p><div class="tools"><span class="pill">1С / CRM</span></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="callout red" style="margin:0"><b>Боль № 1.</b> Технолог перерисовывает проект из салона в CAD: двойная работа, ошибки в размерах, 1–3 дня задержки.</div>
+    <div class="callout warn" style="margin:0"><b>Боль № 2.</b> Цены и наличие в планировщике расходятся с 1С. Продавец обещает то, чего нет или что стоит дороже.</div>
+    <div class="callout" style="margin:0"><b>Боль № 3.</b> Качество продажи зависит от квалификации продавца. Нужны «защита от дурака» и технологические правила прямо в конфигураторе.</div>
+  </div>
+</section>
+
+<section id="gaps">
+  <h2><span class="n">09</span>Незанятые ниши и возможности</h2>
+  <div class="grid g4">
+    <div class="card"><h4>1 · Веб-first «салон + производство»</h4><p class="small" style="margin:0">В РФ нет браузерного продукта, в котором удобство PRO100 сочеталось бы с технологической точностью Базиса. PlanPlace движется в эту сторону, но через экспорт в чужой CAD.</p></div>
+    <div class="card"><h4>2 · Наследник PRO100</h4><p class="small" style="margin:0">Многие салоны работают на нелегальных или «застывших» версиях. Им нужен простой инструмент без ключей защиты и с миграцией библиотек.</p></div>
+    <div class="card"><h4>3 · 1С «из коробки»</h4><p class="small" style="margin:0">Сегодня обмен с 1С — штучная доработка интегратора. Типовое расширение для УНФ, УТ, КА и ERP (каталог, цены, остатки, заказы) даст весомое конкурентное преимущество.</p></div>
+    <div class="card"><h4>4 · Дилерские сети фабрик</h4><p class="small" style="margin:0">Фабрике нужны единый каталог, дилерские наценки, приём заказов и контроль статусов. Это B2B-сегмент с высоким чеком.</p></div>
+    <div class="card"><h4>5 · Замер с телефона</h4><p class="small" style="margin:0">Скан помещения (LiDAR, RoomPlan) с автоматическим построением стен и проёмов. В мире это уже стандарт (Cyncly Scan, 3D Cloud), в РФ таких решений почти нет.</p></div>
+    <div class="card"><h4>6 · ИИ-автопланировка</h4><p class="small" style="margin:0">Кухня по размерам и пожеланиям за минуту, по правилам эргономики и «рабочего треугольника». Coohom и 3D Cloud уже выводят такие функции на рынок.</p></div>
+    <div class="card"><h4>7 · Облачный рендер без «железа»</h4><p class="small" style="margin:0">В салонах слабые ПК. Серверный фотореализм за 30–60 секунд и 360°-панорамы для клиента по QR-коду.</p></div>
+    <div class="card"><h4>8 · Контент как сервис</h4><p class="small" style="margin:0">Библиотеки декоров (ЛДСП, МДФ, эмаль), фасадов, фурнитуры и техники с актуальными ценами можно монетизировать отдельно, в том числе через поставщиков.</p></div>
+  </div>
+</section>
+
+<section id="options">
+  <h2><span class="n">10</span>Стратегические варианты</h2>
+  <p class="lead">Четыре пути: от покупки готового до собственной платформы. Оценки по шкале 0–10, чем больше, тем лучше (для риска и затрат большее значение означает меньший риск и меньшие затраты).</p>
+  <div class="grid g4" id="optCards"></div>
+  <div class="callout"><b>Почему D.</b> Производственное ядро (деталировка, крепёж, раскрой, постпроцессоры ЧПУ) — это годы отраслевой экспертизы. У Базиса и К3 оно уже есть и привычно технологам. Выгоднее сначала выиграть «фронт» — салон, веб, дилеров и 1С, — а производство подключить через экспорт. Собственный CAM можно развивать постепенно: начать с простой деталировки типовых модулей и расширяться по мере роста выручки.</div>
+</section>
+
+<section id="arch">
+  <h2><span class="n">11</span>Целевая архитектура собственного продукта</h2>
+  <p class="lead">Мультиарендная (multi-tenant) веб-платформа. Единая <b>параметрическая модель заказа</b> служит источником правды для 3D, сметы, деталировки и 1С. Оранжевым выделены самые сложные компоненты.</p>
+  <div class="arch">
+    <div class="layer"><div class="lname">Клиенты<small>каналы работы</small></div><div class="boxes">
+      <div class="bx"><b>Салонный планировщик</b><span>браузер, режим киоска, сенсорный экран</span></div>
+      <div class="bx"><b>B2C-виджет для сайта</b><span>упрощённый конструктор, заявка с проектом</span></div>
+      <div class="bx"><b>Кабинет технолога</b><span>проверка, деталировка, экспорт</span></div>
+      <div class="bx"><b>Дилерский портал</b><span>наценки, заказы, статусы</span></div>
+      <div class="bx"><b>Замерщик (PWA / iOS)</b><span>обмер, фото, скан RoomPlan</span></div>
+      <div class="bx"><b>Админка каталога</b><span>материалы, цены, правила</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Движок в браузере<small>TypeScript</small></div><div class="boxes">
+      <div class="bx"><b>2D-редактор помещения</b><span>стены, проёмы, коммуникации, размеры (SVG/Canvas)</span></div>
+      <div class="bx"><b>3D-сцена</b><span>three.js + React Three Fiber, PBR, glTF</span></div>
+      <div class="bx hot"><b>Параметрическое ядро модулей</b><span>корпуса, фасады, столешницы, цоколь, карнизы; DSL правил</span></div>
+      <div class="bx hot"><b>Правила и валидация</b><span>коллизии, эргономика, технологические ограничения</span></div>
+      <div class="bx"><b>Автоплан (ИИ + правила)</b><span>генерация вариантов по размерам</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Сервисы<small>backend API</small></div><div class="boxes">
+      <div class="bx"><b>Проекты и версии</b><span>PostgreSQL (JSONB), история</span></div>
+      <div class="bx"><b>Каталог / PIM</b><span>декоры, фасады, фурнитура, техника, цены</span></div>
+      <div class="bx"><b>Прайсинг и КП</b><span>наценки, скидки, PDF-альбом</span></div>
+      <div class="bx hot"><b>Деталировка и раскрой</b><span>BOM, кромка, присадка, карты раскроя</span></div>
+      <div class="bx"><b>Облачный рендер</b><span>очередь + Blender Cycles на GPU, панорамы 360°</span></div>
+      <div class="bx"><b>CRM-лайт</b><span>воронка, задачи, статусы</span></div>
+      <div class="bx"><b>Тенанты, роли, биллинг</b><span>салоны, дилеры, фабрики</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Интеграции<small>внешние системы</small></div><div class="boxes">
+      <div class="bx hot"><b>1С (расширение .cfe)</b><span>HTTP-сервисы + OData: номенклатура, цены, остатки, заказы</span></div>
+      <div class="bx"><b>Базис / К3</b><span>экспорт деталей (CSV/XML), по возможности .b3d</span></div>
+      <div class="bx"><b>Раскрой / ЧПУ</b><span>CSV для раскроя, DXF, постпроцессоры</span></div>
+      <div class="bx"><b>Битрикс24 / amoCRM</b><span>лиды и сделки</span></div>
+      <div class="bx"><b>Мессенджеры</b><span>Telegram, MAX, e-mail: отправка проекта клиенту</span></div>
+    </div></div>
+    <div class="layer"><div class="lname">Инфраструктура<small>в РФ (152-ФЗ)</small></div><div class="boxes">
+      <div class="bx"><b>Российское облако</b><span>Yandex Cloud / VK Cloud / Selectel</span></div>
+      <div class="bx"><b>S3-хранилище ассетов</b><span>текстуры, glTF, рендеры (CDN)</span></div>
+      <div class="bx"><b>GPU-пул рендера</b><span>по требованию, автоскейлинг</span></div>
+      <div class="bx"><b>Наблюдаемость</b><span>логи, метрики, ошибки, бэкапы</span></div>
+    </div></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h4>Главный архитектурный принцип</h4><p class="small" style="margin:0">Хранить не «3D-картинку», а <b>семантическую модель</b>: модуль «тумба под мойку 600» с параметрами, правилами и составом деталей. 3D-вид, смета, чертёж и BOM для 1С — это <b>проекции</b> этой модели. Так устроены Базис и Winner, и именно этого нет в PRO100 и интерьерных планировщиках.</p></div>
+    <div class="card"><h4>Точность и единицы</h4><p class="small" style="margin:0">Все размеры хранить в целых миллиметрах (или десятых долях мм), а не в float-координатах сцены. Толщины плит, зазоры фасадов и кромка — параметры материала. Каждое правило модуля покрыть тестами на «золотых» эталонных проектах фабрики-пилота.</p></div>
+    <div class="card"><h4>Формат каталога</h4><p class="small" style="margin:0">Модули описывать декларативно: JSON/YAML-схема с параметрами, диапазонами, формулами деталей, вариантами наполнения и правилами совместимости. Тогда технолог фабрики сможет заводить ассортимент без программиста, а это критично для тиражирования.</p></div>
+  </div>
+</section>
+
+<section id="onec">
+  <h2><span class="n">12</span>Интеграция с 1С: как сделать правильно</h2>
+  <p class="lead">Платформа 1С:Предприятие 8.3 даёт два штатных механизма: автоматический REST-интерфейс по протоколу OData v3 и собственные HTTP-сервисы с поддержкой JWT <sup class="c">[47][48]</sup>. Для тиражируемого продукта оптимально поставлять <b>расширение конфигурации (.cfe)</b> со своими HTTP-сервисами. Оно не меняет типовую конфигурацию и не ломается при её обновлении.</p>
+  <div class="grid g-64">
+    <div class="card">
+      <h4>Потоки данных</h4>
+      <svg class="chart" viewBox="0 0 900 330" id="onecSvg"></svg>
+    </div>
+    <div class="card">
+      <h4>Практика внедрения</h4>
+      <ul class="tight">
+        <li><b>Целевые конфигурации:</b> 1С:УНФ (малые фабрики и салоны), 1С:УТ и КА (торговля и производство), 1С:ERP (крупные предприятия). Отраслевые: 1С-БАЗИС:Производство, 1С:Мебельное производство <sup class="c">[30][49]</sup>.</li>
+        <li><b>Справочник соответствий</b> «материал конфигуратора ↔ номенклатура 1С» (декор, толщина, характеристика) — самый трудоёмкий этап внедрения у каждого клиента.</li>
+        <li><b>Идемпотентность:</b> у каждого заказа свой GUID, поэтому повторная отправка не создаёт дубль. Статусы синхронизируются в обе стороны, как в кейсе Базис-Облако ↔ 1С у «Волгамебели» <sup class="c">[31]</sup>.</li>
+        <li><b>Облако и «коробка»:</b> 1С часто стоит на сервере клиента за NAT. Нужен коннектор с исходящим соединением (агент с long-polling или очередью), а не входящий вебхук.</li>
+        <li><b>Минимальный MVP:</b> выгрузка номенклатуры и цен в конфигуратор, загрузка «Заказа покупателя» со спецификацией и PDF. Этого достаточно, чтобы доказать ценность.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="oss">
+  <h2><span class="n">13</span>Готовые заготовки: open source и SDK</h2>
+  <p class="lead">Готового open-source «Базиса» не существует, но есть хорошие строительные блоки, которые заметно ускоряют разработку. Главный фильтр — лицензия. Клиентский JavaScript передаётся в браузер пользователя, поэтому GPL-код во фронтенде фактически обязывает раскрыть его исходники.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th style="min-width:200px">Компонент</th><th>Назначение</th><th>Лицензия</th><th style="min-width:170px">Зрелость</th><th style="min-width:340px">Как использовать</th><th>Вердикт</th></tr></thead>
+    <tbody>
+      <tr><td><b>three.js</b> + <b>React Three Fiber</b>, drei</td><td>3D-движок в браузере</td><td>MIT</td><td>Индустриальный стандарт</td><td>Основа 3D-сцены: PBR-материалы, glTF, камеры, выделение</td><td><span class="pill ok">база</span></td></tr>
+      <tr><td><b>Babylon.js</b> / <b>PlayCanvas</b></td><td>Альтернативные 3D-движки</td><td>Apache-2.0 / MIT</td><td>Высокая</td><td>Если нужен «игровой» редактор сцен или готовый инспектор; в остальных случаях — three.js</td><td><span class="pill wr">альтернатива</span></td></tr>
+      <tr><td><b>three-gpu-pathtracer</b></td><td>Фотореализм прямо в браузере</td><td>MIT</td><td>Активный, ~1,8 тыс. ★ <sup class="c">[50]</sup></td><td>«Фото» проекта на мощном ПК без сервера; превью перед облачным рендером</td><td><span class="pill ok">использовать</span></td></tr>
+      <tr><td><b>Blender (Cycles), headless</b></td><td>Серверный рендер 4K и 360°</td><td>GPL (на результаты рендера лицензия не распространяется)</td><td>Максимальная</td><td>Рендер-воркеры в Docker на GPU: сцена экспортируется в glTF и собирается скриптом на Python</td><td><span class="pill ok">использовать</span></td></tr>
+      <tr><td><b>blueprint3d</b> / <b>blueprint-js</b></td><td>2D-план + 3D-интерьер</td><td>MIT</td><td>blueprint3d давно не развивается (~2 тыс. ★); blueprint-js — ES6-порт <sup class="c">[51][52]</sup></td><td>Источник идей и кода для редактора стен и привязки предметов к стенам. Заимствовать выборочно, но не брать за фундамент</td><td><span class="pill wr">как референс</span></td></tr>
+      <tr><td><b>react-planner</b> (CVDLAB)</td><td>2D-план → 3D, каталог объектов</td><td>MIT</td><td>~1,45 тыс. ★, активность низкая (последний push — 2024) <sup class="c">[53]</sup></td><td>Архитектура каталога и свойств, SVG-редактор плана</td><td><span class="pill wr">как референс</span></td></tr>
+      <tr><td><b>replicad</b> + <b>OpenCascade.js</b></td><td>Точная B-rep-геометрия, STEP, фаски, фрезеровки</td><td>MIT / LGPL-2.1</td><td>Активные <sup class="c">[54][55]</sup></td><td>Сложные фасады (фрезеровка, радиусы), столешницы с вырезами, экспорт STEP/DXF для ЧПУ. Запускать в Web Worker</td><td><span class="pill ok">для v1+</span></td></tr>
+      <tr><td><b>Sweet Home 3D / SH3D JS</b></td><td>Готовый планировщик интерьеров</td><td>GPL-2.0+</td><td>Высокая (Java) <sup class="c">[56]</sup></td><td>Только как пример UX и источник свободных 3D-моделей (с атрибуцией). В код продукта не встраивать</td><td><span class="pill no">не как основа</span></td></tr>
+      <tr><td><b>SVGnest</b> и алгоритмы гильотинного раскроя</td><td>Нестинг и раскрой</td><td>MIT (SVGnest)</td><td>Средняя</td><td>Для ЛДСП нужен гильотинный раскрой с учётом кромки, направления текстуры и остатков — его проще написать самим. SVGnest пригодится для фигурных деталей</td><td><span class="pill wr">частично</span></td></tr>
+      <tr><td><b>Apple RoomPlan</b></td><td>Скан помещения по LiDAR</td><td>SDK iOS 16+</td><td>Доступен с 2022 г. <sup class="c">[57]</sup></td><td>Нативный модуль замерщика: стены, окна, двери, шкафы → USDZ → импорт в план. Точность проверять контрольными замерами</td><td><span class="pill ok">для v2</span></td></tr>
+      <tr><td><b>White-label / партнёрство</b>: PlanPlace, 3Dplan</td><td>Готовый конфигуратор</td><td>Коммерческая</td><td>Работающие продукты</td><td>Быстрый старт для одной фабрики, но собственного продукта и тиражирования так не получится</td><td><span class="pill wr">вариант B</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h4>Рекомендуемый стек</h4><p class="small" style="margin:0"><b>Фронтенд:</b> TypeScript, React, Vite, React Three Fiber, Zustand, SVG или Konva для 2D. <b>Бэкенд:</b> Node.js (NestJS/Fastify) или Python (FastAPI), PostgreSQL, Redis + BullMQ, S3. <b>Рендер:</b> Blender в контейнере на GPU. <b>1С:</b> расширение на встроенном языке + коннектор-агент.</p></div>
+    <div class="card"><h4>3D-контент — отдельная статья затрат</h4><p class="small" style="margin:0">Декоры плит — сканы или текстуры производителей; лицензию нужно уточнять у каждого. Фурнитура — CAD-данные Blum, Hettich, Boyard и др. Технику и декор проще купить в стоках или заказать у 3D-художников. На контент стоит заложить 15–25% бюджета.</p></div>
+    <div class="card"><h4>Чего избегать</h4><p class="small" style="margin:0">Unity WebGL как основы: тяжёлая загрузка и сложная интеграция с веб-интерфейсом. GPL-кода во фронтенде. Хранения размеров во float. Модулей, «зашитых» в код, вместо декларативного каталога.</p></div>
+  </div>
+</section>
+
+<section id="effort">
+  <h2><span class="n">14</span>Сложность и трудоёмкость собственной разработки</h2>
+  <p class="lead">Оценка в человеко-месяцах для продукта уровня v1: салон, производственный выход, 1С, облачный рендер, мульти-салон. Два сценария — классическая разработка и разработка с ИИ-ассистентами (Cursor, Claude Code и т. п.). ИИ сильнее всего ускоряет UI, CRUD и интеграционный код и слабее всего — геометрию, раскрой и доменные правила.</p>
+  <div class="grid g-64">
+    <div class="card"><div id="effortChart"></div></div>
+    <div class="card">
+      <h4>Итог</h4>
+      <div class="grid g2">
+        <div class="kpi" style="padding:0"><div class="v" id="effTotA">—</div><div class="l">чел.-мес., классика</div></div>
+        <div class="kpi" style="padding:0"><div class="v" id="effTotB" style="color:var(--accent)">—</div><div class="l">чел.-мес., с ИИ-ассистентами</div></div>
+      </div>
+      <h4 style="margin-top:18px">Сложность по компонентам (1–5)</h4>
+      <div id="cxList"></div>
+      <p class="small">Сложность 5 — высокий технический риск и необходимость отраслевой экспертизы. Технолог-мебельщик в команде обязателен.</p>
+    </div>
+  </div>
+  <h3>Сценарии команды и бюджета</h3>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Сценарий</th><th style="min-width:320px">Состав</th><th>MVP «Салон + 1С»</th><th>v1 «+ производство, рендер»</th><th>SaaS-готовность</th><th class="num">Бюджет до v1*</th><th>Риск</th></tr></thead>
+    <tbody>
+      <tr><td><b>Соло + ИИ</b></td><td>1 разработчик-основатель, фрилансеры для 3D-контента, консультант-технолог</td><td>6–8 мес.</td><td>18–24 мес.</td><td>от 30 мес.</td><td class="num">2–5 млн ₽</td><td><span class="pill no">высокий</span></td></tr>
+      <tr><td><b>Мини-команда</b></td><td>2 разработчика (3D-фронтенд; бэкенд и 1С) + технолог 0,5 ставки + 3D-художник 0,5 ставки + продукт и продажи (основатель)</td><td>4–5 мес.</td><td>10–12 мес.</td><td>16–18 мес.</td><td class="num">12–20 млн ₽</td><td><span class="pill wr">средний</span></td></tr>
+      <tr><td><b>Продуктовая команда</b></td><td>5–6 разработчиков, QA, дизайнер, технолог, DevOps 0,5 ставки, аккаунт-менеджер</td><td>3 мес.</td><td>7–9 мес.</td><td>12 мес.</td><td class="num">35–55 млн ₽</td><td><span class="pill ok">управляемый</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">* Допущение: полная стоимость инженера 300–450 тыс. ₽/мес (ФОТ, налоги, инструменты); инфраструктура и 3D-контент учтены укрупнённо. Для соло-сценария указаны только внешние расходы, без оценки времени основателя. Это ориентир, а не смета.</p>
+</section>
+
+<section id="roadmap">
+  <h2><span class="n">15</span>Дорожная карта (сценарий «мини-команда»)</h2>
+  <p class="lead">Поэтапный выпуск с обязательным пилотом на реальной фабрике и в салоне. Каждый этап заканчивается измеримым результатом.</p>
+  <div class="card"><div id="gantt"></div></div>
+  <div class="grid g4" style="margin-top:18px">
+    <div class="card"><h4>Этап 0 · Discovery</h4><p class="small" style="margin:0">Фабрика-пилот, 20–30 эталонных проектов, описание модульной системы, выгрузка номенклатуры из 1С, интервью с 5–10 продавцами. <b>Итог:</b> спецификация каталога и правил.</p></div>
+    <div class="card"><h4>Этап 1 · MVP «Салон»</h4><p class="small" style="margin:0">Помещение; прямые, угловые и П-образные кухни; фасады, декоры, столешницы, техника; смета, PDF-КП, заказ в 1С. <b>Итог:</b> проект за 20 минут или быстрее, 10+ реальных договоров.</p></div>
+    <div class="card"><h4>Этап 2 · v1 «Производство»</h4><p class="small" style="margin:0">Деталировка типовых модулей, кромка, присадка по шаблонам, экспорт в Базис/К3 и в раскрой, облачный рендер, мульти-салон. <b>Итог:</b> технологу больше не нужно перерисовывать проект.</p></div>
+    <div class="card"><h4>Этап 3 · SaaS и масштаб</h4><p class="small" style="margin:0">Мультиарендность, биллинг, дилерский портал, B2C-виджет, конструктор каталога для технолога, скан помещения и ИИ-автоплан. <b>Итог:</b> новые фабрики подключаются самостоятельно.</p></div>
+  </div>
+</section>
+
+<section id="economics">
+  <h2><span class="n">16</span>Экономика SaaS и тиражирование</h2>
+  <p class="lead">Иллюстративная модель на основе ценовых ориентиров рынка. Все цифры сегментации — допущения для проверки в интервью с клиентами, а не данные исследования.</p>
+  <div class="grid g3">
+    <div class="card">
+      <h4>Воронка рынка (оценка)</h4>
+      <div class="funnel" id="funnel"></div>
+      <p class="small">39 тыс. — данные Rusprofile <sup class="c">[3]</sup>. Остальные уровни — экспертные допущения.</p>
+    </div>
+    <div class="card">
+      <h4>Предлагаемые тарифы</h4>
+      <table>
+        <thead><tr><th>Тариф</th><th>Для кого</th><th class="num">Цена</th></tr></thead>
+        <tbody>
+          <tr><td><b>Салон</b></td><td>1 точка, до 3 продавцов, B2C-виджет</td><td class="num">6–9 тыс. ₽/мес</td></tr>
+          <tr><td><b>Фабрика</b></td><td>каталог, производственный экспорт, 1С, до 5 точек</td><td class="num">25–40 тыс. ₽/мес</td></tr>
+          <tr><td><b>Сеть</b></td><td>дилеры, наценки, SLA, BI</td><td class="num">от 60 тыс. ₽/мес</td></tr>
+          <tr><td><b>Внедрение</b></td><td>каталог, 1С, обучение</td><td class="num">150–600 тыс. ₽</td></tr>
+          <tr><td><b>Рендер</b></td><td>пакеты сверх лимита</td><td class="num">по объёму</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Ориентиры: PlanPlace 3,9–13,5 тыс. ₽/мес, Ceramic 3D ~10,5–14 тыс. ₽/мес, БАЗИС-Облако от 6,3 тыс. ₽/мес.</p>
+    </div>
+    <div class="card">
+      <h4>Иллюстрация выручки 3-го года</h4>
+      <div id="arrChart"></div>
+      <p class="small">Допущения: 150 салонов × 90 тыс. ₽/год + 25 фабрик × 420 тыс. ₽/год = ~24 млн ₽ ARR, плюс разовые внедрения ~5 млн ₽/год. Отток (~15% в год) не показан. Целевые метрики: окупаемость CAC — не дольше 12 месяцев, чистое удержание выручки (NRR) — не ниже 100% за счёт роста числа точек у фабрик.</p>
+    </div>
+  </div>
+  <div class="callout"><b>Каналы тиражирования:</b> (1) фабрики, подключающие свои дилерские сети, — один договор даёт десятки салонов; (2) поставщики плит и фурнитуры, которым выгодны готовые каталоги (совместный маркетинг); (3) партнёры-интеграторы 1С (франчайзи), продающие внедрение; (4) миграция пользователей PRO100 с импортом их библиотек.</div>
+</section>
+
+<section id="risks">
+  <h2><span class="n">17</span>Карта рисков</h2>
+  <div class="grid g-64">
+    <div class="card"><div id="riskMap"></div></div>
+    <div class="card">
+      <h4>Меры снижения</h4>
+      <table id="riskTbl"><thead><tr><th>#</th><th>Риск</th><th>Мера</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section id="vibe">
+  <h2><span class="n">18</span>Вайбкодинг: что реально, а что нет</h2>
+  <p class="lead">С ИИ-ассистентами один человек действительно может собрать впечатляющий прототип за несколько недель. Но продукт, по которому фабрика режет плиту, требует инженерной дисциплины: ошибка в 1 мм означает переделку фасада.</p>
+  <div class="grid g3">
+    <div class="card"><h4 style="color:var(--ok)">Хорошо получается с ИИ</h4><ul class="tight"><li>UI, формы, админки каталога, дашборды</li><li>3D-сцена, камера, материалы, выделение, drag-and-drop</li><li>CRUD API, авторизация, роли, генерация PDF</li><li>Каркас интеграции с 1С (HTTP-сервисы, сериализация)</li><li>Скрипты сборки сцен для Blender</li></ul></div>
+    <div class="card"><h4 style="color:#b58900">Получается под строгим контролем</h4><ul class="tight"><li>Параметрические модули и формулы деталей</li><li>Коллизии, привязки к стенам, углы и примыкания</li><li>Прайсинг со сложными наценками и скидками</li><li>Производительность больших сцен на слабых ПК</li><li>Безопасность мультиарендности</li></ul></div>
+    <div class="card"><h4 style="color:var(--bad)">Требует экспертизы и тестов</h4><ul class="tight"><li>Технология: зазоры, кромка, присадка, крепёж</li><li>Раскрой с учётом текстуры, остатков и станка</li><li>Постпроцессоры и выгрузка на станки с ЧПУ</li><li>Сопоставление номенклатуры 1С у разных клиентов</li><li>Юридические вопросы: лицензии контента, 152-ФЗ</li></ul></div>
+  </div>
+  <div class="callout"><b>Рабочий рецепт:</b> (1) доменная спецификация модулей в виде данных, а не прозы; (2) набор «золотых» проектов с эталонной деталировкой от технолога и автотесты, сверяющие BOM до миллиметра; (3) маленькие итерации и ревью каждого изменения ядра; (4) TypeScript в строгом режиме, линтеры, CI; (5) архитектуру и модель данных проектирует человек, а ИИ пишет реализацию.</div>
+</section>
+
+<section id="next">
+  <h2><span class="n">19</span>Следующие шаги (ближайшие 6–8 недель)</h2>
+  <div class="grid g2">
+    <div class="card"><ol class="tight">
+      <li><b>Выбрать фабрику-пилот</b> и 1–2 салона; договориться о доступе к каталогу, прайсу и копии базы 1С.</li>
+      <li><b>Взять демо и триалы</b> Базис-Салон/Облако, К3 Online (20 часов бесплатно), Ceramic 3D, PlanPlace (15 дней) и сделать в каждом один и тот же эталонный проект.</li>
+      <li><b>Провести 10–15 интервью</b> с продавцами, замерщиками и технологами; замерить время проекта и число переделок.</li>
+      <li><b>Формализовать модульную систему</b> пилота (20–40 базовых модулей) в JSON-схеме.</li>
+      <li><b>Собрать технический прототип</b> за 3–4 недели: стены, линия модулей, смена фасадов и декоров, смета, выгрузка заказа в тестовую 1С:УНФ.</li>
+    </ol></div>
+    <div class="card"><ol class="tight" start="6">
+      <li><b>Показать прототип</b> пяти фабрикам и собрать предзаказы или письма о намерениях (LOI) с ценой.</li>
+      <li><b>Принять решение</b> go/no-go и выбрать сценарий команды (раздел 14).</li>
+      <li><b>Проработать юридические вопросы:</b> товарный знак, лицензии текстур и моделей, хранение ПДн в РФ, перспективу включения в реестр отечественного ПО.</li>
+      <li><b>Определить производственный выход:</b> экспорт в Базис или К3 (в зависимости от того, чем пользуется пилот) либо собственная деталировка.</li>
+      <li><b>Спланировать MVP</b> на 4–5 месяцев с метриками: время проекта, конверсия проекта в договор, число ошибок, дошедших до производства.</li>
+    </ol></div>
+  </div>
+</section>
+
+<section id="sources">
+  <h2><span class="n">20</span>Источники</h2>
+  <p class="small">Данные собраны 25.09.2026. Вендоры меняют цены и условия, поэтому перед решениями сверяйтесь с актуальными прайсами. Маркетинговые показатели («рост конверсии», «число клиентов») приведены как заявления вендоров.</p>
+  <ol class="src">
+    <li>АМДПР / Proderevo: итоги 2025 г. — выпуск 547,6 млрд ₽, кухонная мебель −8,5% — <a href="https://bzbroker.ru/potoksss/tpost/jkb3c05et1-rinok-mebeli-rossii-2025-obzor-analitika">bzbroker.ru (перепечатка)</a></li>
+    <li>РБК Исследования рынков: мебель на маркетплейсах, итоги 2025 — <a href="https://marketing.rbc.ru/articles/16387/">marketing.rbc.ru</a></li>
+    <li>Коммерсантъ / Rusprofile: 39 тыс. мебельных компаний — <a href="https://www.kommersant.ru/doc/7833765">kommersant.ru</a></li>
+    <li>Т-Бизнес секреты / T-Data: продавцы мебели в 2025 г. — <a href="https://secrets.tbank.ru/trendy/mebelnyj-biznes-v-2025-godu/">secrets.tbank.ru</a></li>
+    <li>Прайс Ceramic 3D Бизнес — <a href="http://ru.ceramic3d.com/price">ru.ceramic3d.com/price</a></li>
+    <li>Модуль «Кухни» Ceramic 3D — <a href="http://ru.ceramic3d.com/products/kitchen-room/">ru.ceramic3d.com</a></li>
+    <li>Прайс-лист БАЗИС 2025 — <a href="https://www.bazissoft.ru/bazis-news/58-updates/2057-2025-bazissystem">bazissoft.ru</a>; реестр ПО — <a href="https://allsoft.ru/software/vendors/bazis-centr/kompleks-programm-sistemy-bazis/">allsoft.ru</a></li>
+    <li>БАЗИС-Облако, тарифы — <a href="https://baz-plus.ru/cloud/price">baz-plus.ru/cloud/price</a></li>
+    <li>PRO100: приостановка продаж в РФ — <a href="http://spb-pro100.ru/">spb-pro100.ru</a></li>
+    <li>К3-Мебель, прейскурант — <a href="https://k3-mebel.ru/price.html">k3-mebel.ru/price.html</a></li>
+    <li>К3-Мебель Online, почасовая оплата — <a href="https://k3-mebel.ru/downloads/free-version.html">k3-mebel.ru</a></li>
+    <li>PRO100: цены дилеров — <a href="https://pro100-kostroma.ru/">pro100-kostroma.ru</a>, <a href="https://megamaster.su/programma-pro100-dlja-3d-proektirovanija-obzor/">megamaster.su</a></li>
+    <li>bCAD, цены — <a href="https://www.bcad.ru/prices/">bcad.ru/prices</a></li>
+    <li>Cyncly Winner Flex — <a href="https://www.cyncly.com/products/winner-flex">cyncly.com</a>; сравнение Winner Design и Flex — <a href="https://winnerdesign.support.compusoftgroup.com/hc/en-gb/articles/46410456836881-Comparison-of-Winner-Design-and-Winner-Flex">support</a></li>
+    <li>PlanPlace, тарифы (ASAI Soft) — <a href="https://asai-soft.com/planplace/">asai-soft.com/planplace</a></li>
+    <li>PlanPlace, интеграция с БАЗИС и ASAI — <a href="https://planplace.online/">planplace.online</a></li>
+    <li>3Dplan — <a href="https://3dplan.io/">3dplan.io</a></li>
+    <li>UPlan — онлайн 3D-конструктор кухни (материалы сайта вендора)</li>
+    <li>Coohom Design-to-Manufacture — <a href="https://www.e.coohom.com/design-to-manufacture">e.coohom.com</a></li>
+    <li>Coohom Kitchen &amp; Bath — <a href="https://www.coohom.com/helpcenter/kitchen-bath-one-integrated-platform">coohom.com</a></li>
+    <li>Coohom AI Kitchen Auto-Layout (KBIS 2026) — <a href="https://blog.coohom.com/design-in-seconds-meet-coohoms-ai-kitchen-auto-layout-at-kbis-2026/">blog.coohom.com</a></li>
+    <li>3D Cloud AI Kitchen Designer — <a href="https://3dcloud.com/industries/3d-kitchen-designer/">3dcloud.com</a></li>
+    <li>Лемана ПРО: проектирование кухонь — <a href="https://lemanapro.ru/proekt-kuhni/">lemanapro.ru</a></li>
+    <li>IKEA Kreativ / Geomagical Labs — <a href="https://www.ingka.com/newsroom/ikea-launches-new-ai-powered-experience-empowering-customers-to-create-lifelike-room-designs/">ingka.com</a></li>
+    <li>Форум PROMEBELclub: «К-3 или Про-100» — <a href="https://promebelclub.ru/forum/showthread.php?t=7290">promebelclub.ru</a></li>
+    <li>Обзор программ проектирования мебели — <a href="https://inner.su/articles/programmy-dlya-proektirovaniya-mebeli-obzor/">inner.su</a></li>
+    <li>Планоплан — <a href="https://planoplan.com/ru/">planoplan.com</a></li>
+    <li>Remplanner, сравнение — <a href="https://remplanner.ru/comparison/">remplanner.ru</a></li>
+    <li>Исследование рынка мебели 2018–2029 — <a href="https://sponsr.ru/dbka/118928/Issledovanie_rynka_mebeli_v_Rossii_sadovaya_korpusnaya_i_kuhonnaya_mebel_20182029/">sponsr.ru</a></li>
+    <li>1С-БАЗИС: Производство — <a href="https://baz-plus.ru/1cprod">baz-plus.ru/1cprod</a></li>
+    <li>Кейс ITONE: обмен заказами 1С ↔ Базис-Облако — <a href="https://www.itone.ru/cases/avtomatizaciya-obmena-zakazami-mezhdu-1c-i-bazis-oblako/">itone.ru</a></li>
+    <li>Астра Конструктор Мебели — <a href="https://astrapro.software/">astrapro.software</a>, <a href="https://astra-km.ru/software/astra-konstruktor-mebeli/">astra-km.ru</a></li>
+    <li>Dataintelo: Kitchen &amp; Bath Design Software Market — <a href="https://dataintelo.com/report/kitchen-and-bath-design-software-market">dataintelo.com</a></li>
+    <li>Infinity Market Research: Furniture Design Software Market — <a href="https://infinitymarketresearch.com/report/furniture-design-software-market/17515">infinitymarketresearch.com</a></li>
+    <li>Визикон — <a href="https://www.visicon.ru/">visicon.ru</a></li>
+    <li>Cyncly Spaces Flex (материалы вендора) — <a href="https://www.cyncly.com/">cyncly.com</a></li>
+    <li>Cyncly Design Flex, цены — <a href="https://www.cyncly.com/en-AU/products/design-flex/pricing">cyncly.com</a></li>
+    <li>KitchenDraw — <a href="https://www.kitchendraw.com/ENG/index.asp">kitchendraw.com</a></li>
+    <li>imos iX 2025 — <a href="https://imos3d.co.nz/ix2025/">imos3d.co.nz</a></li>
+    <li>Microvellum — <a href="https://www.microvellum.com/">microvellum.com</a></li>
+    <li>Mozaik Software — <a href="https://www.mozaiksoftware.com/">mozaiksoftware.com</a></li>
+    <li>Polyboard — <a href="http://boole.eu/polyboard_eng.php">boole.eu</a></li>
+    <li>Roomle Rubens, тарифы — <a href="https://www.roomle.com/en/pricing">roomle.com</a></li>
+    <li>3D Cloud × Kingfisher — <a href="https://www.prnewswire.co.uk/news-releases/3d-cloud-tm-by-marxent-partners-with-kingfisher-to-deploy-3d-visualisation-configuration-and-room-planning-technology-803280920.html">prnewswire</a></li>
+    <li>Threekit: Kitchen &amp; Bath, цены — <a href="https://www.threekit.com/pricing">threekit.com</a></li>
+    <li>CAD Projekt K&amp;A: прайс CAD Decor / CAD Kuchnie (PDF вендора, 23.10.2025)</li>
+    <li>1С: REST-интерфейс (OData) — <a href="https://v8.1c.ru/platforma/rest-interfeys/">v8.1c.ru</a></li>
+    <li>1С: Руководство разработчика, гл. 17 «Интеграция с внешними системами» — <a href="https://its.1c.ru/db/v8325doc/bookmark/dev/TI000000783">its.1c.ru</a></li>
+    <li>1С:Мебельное производство (САЙФИЛД) — <a href="https://www.mebelfirm.ru/programs/ps-mebelnoe-proizvodstvo/">mebelfirm.ru</a></li>
+    <li>three-gpu-pathtracer — <a href="https://github.com/gkjohnson/three-gpu-pathtracer">github.com</a></li>
+    <li>blueprint3d — <a href="https://github.com/furnishup/blueprint3d">github.com</a></li>
+    <li>blueprint-js — <a href="https://github.com/aalavandhaann/blueprint-js/">github.com</a></li>
+    <li>react-planner — <a href="https://github.com/cvdlab/react-planner/">github.com</a></li>
+    <li>replicad — <a href="https://replicad.xyz/">replicad.xyz</a></li>
+    <li>OpenCascade.js — <a href="https://ocjs.org/docs/about">ocjs.org</a></li>
+    <li>Sweet Home 3D, лицензия — <a href="https://www.sweethome3d.com/license/">sweethome3d.com</a></li>
+    <li>Apple RoomPlan — <a href="https://developer.apple.com/augmented-reality/roomplan/">developer.apple.com</a></li>
+    <li>3D-конструктор «Народные кухни» — <a href="https://www.project.it-alttpp.ru/projects/2021/detail/1380/">project.it-alttpp.ru</a></li>
+    <li>BROSKO Planner — онлайн 3D-конструктор шкафов-купе (материалы сайта фабрики)</li>
+  </ol>
+  <div class="foot">Отчёт подготовлен по открытым источникам. Оценки трудоёмкости, бюджета, сегментации и функциональные баллы — экспертные допущения; их нужно проверить на пилоте и в интервью с клиентами.</div>
+</section>
+</main>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs={},parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function txt(parent,x,y,s,attrs={}){const t=el('text',Object.assign({x,y,'font-size':12,fill:'#4a5670'},attrs),parent);t.textContent=s;return t}
+function svgIn(id,w,h){const c=document.getElementById(id);const s=el('svg',{viewBox:`0 0 ${w} ${h}`,class:'chart'});c.appendChild(s);return s}
+const ru=(v,d)=>v.toLocaleString('ru-RU',{maximumFractionDigits:d??1});
+
+/* 02 market indicators */
+(function(){
+  const d=[
+    ['Выпуск мебели 2025, млрд ₽',547.6,600,'#1b3163',v=>ru(v)],
+    ['в т. ч. бытовая (B2C), млрд ₽',425.4,600,'#2f6fed',v=>ru(v)],
+    ['офисная и торговая, млрд ₽',122.2,600,'#8b5cf6',v=>ru(v)],
+    ['Кухонная мебель, млн ед. (−8,5% г/г)',16.4,30,'#f08a24',v=>ru(v)],
+    ['Мебельных компаний, тыс.',39,50,'#0fa3a3',v=>'≈'+v],
+    ['Продавцов мебели, тыс.',38,50,'#0fa3a3',v=>'≈'+v],
+    ['Рост продаж мебели на маркетплейсах',1.7,2.5,'#e0475b',v=>'× '+ru(v)]
+  ];
+  const W=900,rh=44,H=d.length*rh+10,s=svgIn('mktChart',W,H),x0=320,bw=480;
+  d.forEach((r,i)=>{const y=i*rh+8;txt(s,0,y+21,r[0],{'font-size':14,fill:'#172033'});
+    el('rect',{x:x0,y:y+6,width:bw,height:22,rx:6,fill:'#eef2f8'},s);
+    el('rect',{x:x0,y:y+6,width:bw*r[1]/r[2],height:22,rx:6,fill:r[3]},s);
+    txt(s,x0+bw*r[1]/r[2]+8,y+22,r[4](r[1]),{'font-size':14,'font-weight':700,fill:'#172033'});});
+})();
+
+/* 03 positioning map */
+(function(){
+  const W=1500,H=580,m={l:60,r:30,t:30,b:60},s=svgIn('posMap',W,H),iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const X=v=>m.l+iw*v/100,Y=v=>m.t+ih*(1-v/100);
+  el('rect',{x:m.l,y:m.t,width:iw,height:ih,fill:'#fbfcfe',stroke:'#e3e8f0',rx:10},s);
+  [25,75].forEach(v=>{el('line',{x1:X(v),x2:X(v),y1:m.t,y2:m.t+ih,stroke:'#f0f3f8'},s);el('line',{x1:m.l,x2:m.l+iw,y1:Y(v),y2:Y(v),stroke:'#f0f3f8'},s)});
+  el('line',{x1:X(50),x2:X(50),y1:m.t,y2:m.t+ih,stroke:'#cdd5e2','stroke-dasharray':'4 4'},s);
+  el('line',{x1:m.l,x2:m.l+iw,y1:Y(50),y2:Y(50),stroke:'#cdd5e2','stroke-dasharray':'4 4'},s);
+  el('rect',{x:X(56),y:Y(99),width:X(80)-X(56),height:Y(60)-Y(99),rx:18,fill:'rgba(240,138,36,.08)',stroke:'#f08a24','stroke-width':2,'stroke-dasharray':'8 6'},s);
+  txt(s,X(68),Y(74),'Целевая зона',{'text-anchor':'middle','font-size':15,'font-weight':800,fill:'#c46a12'});
+  txt(s,X(68),Y(74)+18,'веб + салон + производство + 1С',{'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#c46a12'});
+  txt(s,m.l+8,H-22,'← Продажа и визуализация',{'font-size':13,'font-weight':700});
+  txt(s,m.l+iw-8,H-22,'Производство, CAD/CAM →',{'font-size':13,'font-weight':700,'text-anchor':'end'});
+  txt(s,X(50),H-22,'Фокус решения',{'font-size':12,'text-anchor':'middle',fill:'#7c879e'});
+  const yl1=el('text',{x:22,y:m.t+ih,'font-size':13,fill:'#4a5670','font-weight':700,transform:`rotate(-90 22 ${m.t+ih})`},s);yl1.textContent='Десктоп / on-prem';
+  const yl2=el('text',{x:22,y:m.t,'font-size':13,fill:'#4a5670','font-weight':700,'text-anchor':'end',transform:`rotate(-90 22 ${m.t})`},s);yl2.textContent='Веб / облако →';
+  const C={ru:'#2f6fed',in:'#8b5cf6',cn:'#e0475b'};
+  const P=[
+    ['Ceramic 3D',14,46,26,'ru'],['Базис',80,32,30,'ru'],['К3-Мебель',68,18,22,'ru'],['PRO100',30,10,24,'in'],['bCAD',52,12,14,'ru'],['Астра',60,6,11,'ru'],
+    ['БАЗИС-Облако',86,70,14,'ru'],['PlanPlace',38,80,12,'ru'],['3Dplan',27,88,10,'ru'],['UPlan',15,93,10,'ru'],['Планоплан',6,66,16,'ru'],['Remplanner',5,84,10,'ru'],
+    ['Cyncly Winner / 2020 Flex',36,62,28,'in'],['KitchenDraw',40,26,16,'in'],['imos iX',92,52,22,'in'],['Cabinet Vision / Microvellum',91,18,20,'in'],['Mozaik',78,46,14,'in'],
+    ['Roomle',50,95,14,'in'],['3D Cloud / Threekit',24,98,18,'in'],['Coohom',48,78,26,'cn'],['Polyboard',78,8,10,'in']
+  ];
+  P.forEach(p=>{const cx=X(p[1]),cy=Y(p[2]);el('circle',{cx,cy,r:p[3],fill:C[p[4]],'fill-opacity':.16,stroke:C[p[4]],'stroke-width':2},s);
+    el('circle',{cx,cy,r:3.5,fill:C[p[4]]},s);
+    const t=txt(s,cx,cy-p[3]-7,p[0],{'text-anchor':'middle','font-size':13,'font-weight':700,fill:'#172033'});
+    t.setAttribute('paint-order','stroke');t.setAttribute('stroke','#fbfcfe');t.setAttribute('stroke-width','4')});
+})();
+
+/* 06 heatmap */
+(function(){
+  const F=['Обмер, помещение','Параметри&shy;ческая мебель','Салонный UX, скорость','Фото&shy;реализм, 360°','Смета, КП, цены','Детали&shy;ровка','Раскрой, ЧПУ','Интеграция с 1С','Веб, облако','Виджет на сайт','Мульти-салон, дилеры','ИИ, автоплан','Доступ&shy;ность в РФ'];
+  const R=[
+    ['Ceramic 3D + «Кухни»','ru',[3,2,3,3,3,1,0,2,2,1,2,2,3]],
+    ['БАЗИС (Мебельщик + Салон + Облако)','ru',[2,3,2,1,3,3,3,3,2,1,3,0,3]],
+    ['К3-Мебель','ru',[2,3,1,2,3,3,3,2,1,0,1,0,3]],
+    ['PRO100','in',[2,2,3,2,2,1,1,1,0,0,1,0,1]],
+    ['bCAD','ru',[2,2,2,2,2,2,2,1,0,0,1,0,3]],
+    ['PlanPlace','ru',[2,2,3,2,3,2,1,1,3,3,2,0,3]],
+    ['3Dplan / UPlan','ru',[1,2,3,2,3,1,0,3,3,3,2,1,3]],
+    ['Планоплан','ru',[3,1,2,3,1,0,0,0,2,2,1,1,3]],
+    ['Cyncly Winner / 2020 Flex','in',[3,3,3,3,3,2,1,0,3,2,3,2,0]],
+    ['KitchenDraw','in',[2,3,3,2,3,2,1,1,1,0,2,0,1]],
+    ['imos iX','in',[3,3,2,3,3,3,3,1,2,2,3,2,0]],
+    ['Coohom','cn',[3,3,3,3,2,2,2,0,3,3,2,3,1]],
+    ['Roomle Rubens','in',[1,3,2,2,3,2,2,1,3,3,2,1,0]],
+    ['Целевой продукт (v1–v2)','t',[3,3,3,2,3,2,2,3,3,3,3,2,3]]
+  ];
+  const col=v=>['#f3f5f9','#cdeeee','#7fd3d3','#0fa3a3'][v], fc=v=>v>=3?'#fff':'#172033';
+  let h='<thead><tr><th style="min-width:260px;vertical-align:bottom">Решение</th>';
+  F.forEach(f=>h+=`<th class="hd">${f}</th>`);h+='<th class="num" style="vertical-align:bottom">Σ из 39</th></tr></thead><tbody>';
+  R.forEach(r=>{const sum=r[2].reduce((a,b)=>a+b,0);
+    const pill=r[1]==='ru'?'<span class="pill ru">RU</span>':r[1]==='cn'?'<span class="pill cn">CN</span>':r[1]==='t'?'<span class="pill" style="background:#fff0de;color:#c46a12">цель</span>':'<span class="pill in">INT</span>';
+    h+=`<tr${r[1]==='t'?' style="outline:2px dashed #f08a24;outline-offset:-3px"':''}><td><b>${r[0]}</b> ${pill}</td>`;
+    r[2].forEach(v=>h+=`<td class="h" style="background:${col(v)};color:${fc(v)}">${v}</td>`);
+    h+=`<td class="num"><b style="font-size:15px">${sum}</b></td></tr>`});
+  document.getElementById('heat').innerHTML=h+'</tbody>';
+})();
+
+/* 07 TCO */
+(function(){
+  const d=[
+    ['Ceramic 3D «Кухонный»',420,'подписка: 168 + 126 + 126','#e0475b'],
+    ['БАЗИС-Облако (базовый тариф)',189,'63 × 3 года','#2f6fed'],
+    ['БАЗИС Мебельщик + Салон',159.6,'133 + обновления 2 × 13,3','#2f6fed'],
+    ['PlanPlace BASE (годовой тариф)',98.4,'32,8 × 3 года, без лимита пользователей','#0fa3a3'],
+    ['К3-Мебель «Эксперт 1»',95,'бессрочно; техподдержка отдельно','#2f6fed'],
+    ['БАЗИС-Салон',44.4,'37 + обновления 2 × 3,7','#2f6fed'],
+    ['К3-Мебель «Салон» + «Справочники»',43,'35 + 8, бессрочно','#2f6fed'],
+    ['bCAD Салон',40,'бессрочно, без НДС','#2f6fed']
+  ];
+  const W=1000,rh=48,m=350,H=d.length*rh+30,s=svgIn('tcoChart',W,H),bw=520,max=440;
+  [0,100,200,300,400].forEach(v=>{const x=m+bw*v/max;el('line',{x1:x,x2:x,y1:0,y2:H-24,stroke:'#eef1f6'},s);txt(s,x,H-6,v+' тыс. ₽',{'text-anchor':'middle','font-size':11})});
+  d.forEach((r,i)=>{const y=i*rh+6;txt(s,0,y+18,r[0],{'font-size':14,'font-weight':700,fill:'#172033'});txt(s,0,y+35,r[2],{'font-size':12,fill:'#7c879e'});
+    el('rect',{x:m,y:y+6,width:bw*r[1]/max,height:26,rx:6,fill:r[3]},s);
+    txt(s,m+bw*r[1]/max+8,y+24,ru(r[1])+' тыс. ₽',{'font-size':13.5,'font-weight':700,fill:'#172033'})});
+})();
+
+/* 10 options */
+(function(){
+  const O=[
+    {n:'A · Купить готовое',d:'Базис (Мебельщик + Салон + Облако) или Ceramic 3D + интегратор 1С.',s:{'Скорость запуска':10,'Низкий риск':9,'Низкие затраты':7,'Дифференциация':1,'Потенциал SaaS':0},v:'Быстро и надёжно для своей фабрики, но продукта на продажу не будет.',c:'#7c879e'},
+    {n:'B · White-label',d:'PlanPlace или 3Dplan под своим брендом + своя интеграция с 1С и каталог.',s:{'Скорость запуска':8,'Низкий риск':7,'Низкие затраты':7,'Дифференциация':4,'Потенциал SaaS':3},v:'Запуск за 1–3 месяца, но зависимость от чужой дорожной карты и ограниченное право перепродажи.',c:'#8b5cf6'},
+    {n:'C · Всё своё',d:'Собственная платформа от 3D до CAM и раскроя, полная замена Базиса.',s:{'Скорость запуска':2,'Низкий риск':2,'Низкие затраты':2,'Дифференциация':9,'Потенциал SaaS':9},v:'Максимальный потенциал, но 2–3 года до паритета с Базисом по производству.',c:'#e0475b'},
+    {n:'D · Гибрид (рекомендуется)',d:'Свой веб-конфигуратор для салона и дилеров + 1С; производство — экспорт в Базис/К3, свой CAM поэтапно.',s:{'Скорость запуска':6,'Низкий риск':6,'Низкие затраты':6,'Дифференциация':8,'Потенциал SaaS':8},v:'Ценность уже в MVP, собственный актив и путь к тиражированию.',c:'#0fa3a3'}
+  ];
+  const box=document.getElementById('optCards');
+  O.forEach(o=>{let h=`<div class="card" style="border-top:4px solid ${o.c}"><h4>${o.n}</h4><p class="small" style="margin:0 0 12px">${o.d}</p>`;
+    for(const k in o.s)h+=`<div class="scoreRow"><span>${k}</span><div class="bar" style="margin:0"><i style="width:${o.s[k]*10}%;background:${o.c}"></i></div><b>${o.s[k]}</b></div>`;
+    const tot=Object.values(o.s).reduce((a,b)=>a+b,0);
+    h+=`<p style="font-size:13px;margin:12px 0 0"><b>Σ ${tot} из 50.</b> ${o.v}</p></div>`;box.insertAdjacentHTML('beforeend',h)});
+})();
+
+/* 12 1C flows */
+(function(){
+  const s=document.getElementById('onecSvg');
+  const defs=el('defs',{},s);const mk=el('marker',{id:'ar',markerWidth:10,markerHeight:10,refX:8,refY:3,orient:'auto'},defs);el('path',{d:'M0,0 L8,3 L0,6 Z',fill:'#4a5670'},mk);
+  const box=(x,y,w,h,t,sub,fill)=>{el('rect',{x,y,width:w,height:h,rx:14,fill},s);txt(s,x+w/2,y+h/2-4,t,{'text-anchor':'middle','font-size':17,'font-weight':800,fill:'#fff'});txt(s,x+w/2,y+h/2+17,sub,{'text-anchor':'middle','font-size':12.5,fill:'#e8eefb'})};
+  box(20,100,220,130,'Конфигуратор','облако / SaaS','#1b3163');
+  box(660,100,220,130,'1С:Предприятие','УНФ · УТ · КА · ERP','#c99400');
+  box(340,262,220,58,'Коннектор-агент','на стороне клиента','#0fa3a3');
+  const arrow=(x1,y1,x2,y2,label,dy)=>{el('line',{x1,y1,x2,y2,stroke:'#4a5670','stroke-width':2,'marker-end':'url(#ar)'},s);txt(s,(x1+x2)/2,(y1+y2)/2+dy,label,{'text-anchor':'middle','font-size':12.5,fill:'#172033','font-weight':600})};
+  arrow(658,125,244,125,'Номенклатура, характеристики, цены, остатки',-7);
+  arrow(658,160,244,160,'Статусы заказов, оплаты, сроки готовности',-7);
+  arrow(242,195,656,195,'Заказ покупателя + спецификация (BOM) + PDF',-7);
+  arrow(242,222,656,222,'Контрагент, договор, предоплата',-7);
+  el('path',{d:'M450,262 L450,236',stroke:'#0fa3a3','stroke-width':2,'stroke-dasharray':'4 3'},s);
+  txt(s,450,32,'HTTP-сервисы (JSON, JWT) в расширении .cfe · OData v3 для чтения справочников',{'text-anchor':'middle','font-size':13.5,fill:'#172033','font-weight':600});
+  txt(s,450,54,'Идемпотентность по GUID · журнал обмена · повтор при сбоях · исходящее соединение из сети клиента',{'text-anchor':'middle','font-size':12.5,fill:'#7c879e'});
+})();
+
+/* 14 effort: [component, classic, with AI, complexity 1-5] */
+const EFF=[
+  ['2D-редактор помещения',3,2,3],['3D-сцена, материалы, realtime',3,2,3],['Параметрическое ядро модулей',8,5.5,5],['Правила и валидация',4,3,4],
+  ['Каталог / PIM + админка',4,2.5,2],['Прайсинг, смета, PDF-КП',2,1.3,2],['Облачный рендер, панорамы',3,2,3],['Деталировка, раскрой, экспорт ЧПУ',8,6,5],
+  ['Интеграция с 1С (расширение + агент)',3,2,4],['CRM-лайт, мульти-салон, роли',3,1.8,2],['SaaS: тенанты, биллинг, безопасность',4,3,3],['3D-контент (модели, текстуры)',3,2.6,2],['QA, документация, обучение',4,3,2]
+];
+(function(){
+  const W=1000,rh=36,m=300,H=EFF.length*rh+56,s=svgIn('effortChart',W,H),bw=610,max=8.5;
+  [0,2,4,6,8].forEach(v=>{const x=m+bw*v/max;el('line',{x1:x,x2:x,y1:0,y2:H-46,stroke:'#eef1f6'},s);txt(s,x,H-30,v+'',{'text-anchor':'middle','font-size':11})});
+  txt(s,m,H-8,'человеко-месяцы',{'font-size':12});
+  EFF.forEach((r,i)=>{const y=i*rh+4;txt(s,0,y+19,r[0],{'font-size':13.5,fill:'#172033'});
+    el('rect',{x:m,y:y+3,width:bw*r[1]/max,height:13,rx:4,fill:'#b8c3d8'},s);
+    el('rect',{x:m,y:y+18,width:bw*r[2]/max,height:13,rx:4,fill:'#0fa3a3'},s);
+    txt(s,m+bw*r[1]/max+6,y+14,ru(r[1]),{'font-size':11.5});txt(s,m+bw*r[2]/max+6,y+29,ru(r[2]),{'font-size':11.5,fill:'#0b7d7d','font-weight':700})});
+  const lg=el('g',{transform:`translate(${m+bw-250},${H-20})`},s);
+  el('rect',{x:0,y:0,width:12,height:12,rx:3,fill:'#b8c3d8'},lg);txt(lg,18,10,'классика',{'font-size':12});
+  el('rect',{x:100,y:0,width:12,height:12,rx:3,fill:'#0fa3a3'},lg);txt(lg,118,10,'с ИИ-ассистентами',{'font-size':12});
+  const a=EFF.reduce((x,r)=>x+r[1],0),b=EFF.reduce((x,r)=>x+r[2],0);
+  document.getElementById('effTotA').textContent=ru(a);document.getElementById('effTotB').textContent=ru(b);
+  const cx=document.getElementById('cxList');
+  [...EFF].sort((p,q)=>q[3]-p[3]).slice(0,7).forEach(r=>{const c=r[3]>=5?'#dc2626':r[3]>=4?'#f08a24':r[3]>=3?'#eab308':'#16a34a';
+    cx.insertAdjacentHTML('beforeend',`<div class="scoreRow" style="grid-template-columns:230px 1fr 24px"><span>${r[0]}</span><div class="bar" style="margin:0"><i style="width:${r[3]*20}%;background:${c}"></i></div><b>${r[3]}</b></div>`)});
+})();
+
+/* 15 gantt */
+(function(){
+  const T=[
+    ['Этап 0 · Discovery, пилот, данные',0,1.5,'#7c879e'],
+    ['MVP: помещение, модули, фасады',1,5,'#2f6fed'],
+    ['MVP: смета, КП, заказ → 1С',2.5,5,'#c99400'],
+    ['Пилот в 1–2 салонах',4,7,'#16a34a'],
+    ['Деталировка и экспорт в Базис/К3/раскрой',5,11,'#e0475b'],
+    ['Облачный рендер, панорамы 360°',6,9,'#8b5cf6'],
+    ['1С: полный обмен, статусы, агент',7,11,'#c99400'],
+    ['Мульти-салон, дилерский портал',9,13,'#2f6fed'],
+    ['SaaS: тенанты, биллинг, онбординг',10,16,'#0fa3a3'],
+    ['B2C-виджет для сайтов',12,15,'#0fa3a3'],
+    ['Скан помещения + ИИ-автоплан',14,20,'#8b5cf6'],
+    ['Продажи и тиражирование',12,24,'#16a34a']
+  ];
+  const W=1600,rh=32,m=360,H=T.length*rh+64,s=svgIn('gantt',W,H),iw=W-m-20,M=24,X=v=>m+iw*v/M;
+  for(let i=0;i<=M;i++){el('line',{x1:X(i),x2:X(i),y1:22,y2:H-26,stroke:i%3===0?'#e3e8f0':'#f4f6fa'},s);if(i%3===0)txt(s,X(i),16,'мес. '+i,{'text-anchor':'middle','font-size':11.5,'font-weight':700})}
+  [[5,'MVP'],[11,'v1'],[16,'SaaS']].forEach(([mm,l])=>{el('line',{x1:X(mm),x2:X(mm),y1:22,y2:H-26,stroke:'#f08a24','stroke-width':2,'stroke-dasharray':'5 4'},s);txt(s,X(mm),H-8,l,{'font-size':13,'font-weight':800,fill:'#c46a12','text-anchor':'middle'})});
+  T.forEach((t,i)=>{const y=30+i*rh;txt(s,0,y+16,t[0],{'font-size':13.5,fill:'#172033'});el('rect',{x:X(t[1]),y:y+2,width:X(t[2])-X(t[1]),height:21,rx:6,fill:t[3],'fill-opacity':.9},s)});
+})();
+
+/* 16 funnel + revenue */
+(function(){
+  const L=[['Мебельные компании в РФ','≈39 000',100,'#1b3163'],['Корпусная и кухонная мебель на заказ (оценка)','≈10 000',88,'#2f6fed'],['Готовы платить за облачный конфигуратор (оценка)','≈3 000',76,'#0fa3a3'],['Цель на 3 года: салоны и фабрики','150–300',64,'#f08a24']];
+  const f=document.getElementById('funnel');
+  L.forEach(l=>f.insertAdjacentHTML('beforeend',`<div class="lvl" style="width:${l[2]}%;background:${l[3]}"><span>${l[0]}</span><b>${l[1]}</b></div>`));
+  const W=460,H=270,s=svgIn('arrChart',W,H);
+  const parts=[['Салоны (ARR)',13.5,'#2f6fed'],['Фабрики (ARR)',10.5,'#0fa3a3'],['Внедрения (разово)',5,'#f08a24']];
+  const y0=H-30,sc=6.5;let acc=0;
+  parts.forEach(p=>{const h=p[1]*sc;el('rect',{x:70,y:y0-acc-h,width:120,height:h,fill:p[2],rx:4},s);txt(s,204,y0-acc-h/2+5,`${p[0]}: ${ru(p[1])} млн ₽`,{'font-size':13.5,fill:'#172033','font-weight':600});acc+=h});
+  txt(s,130,y0-acc-10,'≈29 млн ₽',{'text-anchor':'middle','font-size':17,'font-weight':800,fill:'#172033'});
+  el('line',{x1:50,x2:440,y1:y0,y2:y0,stroke:'#cdd5e2'},s);txt(s,130,y0+19,'Год 3 (иллюстрация)',{'text-anchor':'middle','font-size':12});
+})();
+
+/* 17 risks: [id, risk, probability, impact, mitigation] */
+(function(){
+  const R=[
+    [1,'Сложность параметрического ядра и точность до 1 мм',4,5,'Технолог в команде; «золотые» проекты; автотесты BOM; размеры в целых мм'],
+    [2,'3D-контент и лицензии на декоры и модели',4,4,'Договоры с поставщиками плит и фурнитуры; 15–25% бюджета на контент'],
+    [3,'Разнообразие и доработки 1С у клиентов',4,3,'Расширение .cfe, таблицы соответствий, партнёры-франчайзи 1С'],
+    [4,'Конкуренция Базиса и Ceramic 3D, консерватизм рынка',3,4,'Позиция «дополняем Базис», экспорт .b3d/CSV, фокус на салоне и вебе'],
+    [5,'Производительность на слабых ПК в салонах',3,3,'LOD, инстансинг, сжатые текстуры KTX2, облачный рендер'],
+    [6,'Техдолг и уязвимости в «вайбкоде»',4,4,'Строгий TypeScript, ревью, CI, пентест перед запуском SaaS'],
+    [7,'152-ФЗ: хранение персональных данных клиентов',2,4,'Хостинг в РФ, минимизация ПДн, политики и согласия'],
+    [8,'Зависимость от одного пилотного клиента',3,3,'2–3 пилота разного масштаба; решения по продуктовым метрикам'],
+    [9,'Проприетарные форматы Базиса и К3',3,3,'Нейтральный экспорт CSV/XML; официальное партнёрство с вендорами']
+  ];
+  const W=640,H=430,m={l:70,t:20,r:20,b:60},s=svgIn('riskMap',W,H),cw=(W-m.l-m.r)/5,ch=(H-m.t-m.b)/5;
+  for(let p=1;p<=5;p++)for(let i=1;i<=5;i++){const sc=p*i;const c=sc>=16?'#fbd5d5':sc>=9?'#fde7c7':sc>=5?'#fff6cc':'#e6f6ec';el('rect',{x:m.l+(i-1)*cw,y:m.t+(5-p)*ch,width:cw-3,height:ch-3,rx:8,fill:c},s)}
+  for(let i=1;i<=5;i++){txt(s,m.l+(i-.5)*cw,H-m.b+20,i,{'text-anchor':'middle'});txt(s,m.l-16,m.t+(5-i+.5)*ch+4,i,{'text-anchor':'middle'})}
+  txt(s,m.l+(W-m.l-m.r)/2,H-12,'Влияние →',{'text-anchor':'middle','font-weight':700,'font-size':13});
+  const ym=m.t+(H-m.t-m.b)/2;
+  const yl=el('text',{x:18,y:ym,'text-anchor':'middle','font-weight':700,'font-size':13,fill:'#4a5670',transform:`rotate(-90 18 ${ym})`},s);yl.textContent='Вероятность →';
+  const occ={};
+  R.forEach(r=>{const k=r[2]+'_'+r[3];occ[k]=(occ[k]||0)+1;const n=occ[k]-1;
+    const cx=m.l+(r[3]-.5)*cw+(n%3-1)*32,cy=m.t+(5-r[2]+.5)*ch+Math.floor(n/3)*32;
+    el('circle',{cx,cy,r:15,fill:'#1b3163'},s);txt(s,cx,cy+5,r[0],{'text-anchor':'middle',fill:'#fff','font-weight':800,'font-size':13.5})});
+  const tb=document.querySelector('#riskTbl tbody');
+  R.forEach(r=>tb.insertAdjacentHTML('beforeend',`<tr><td><b>${r[0]}</b></td><td>${r[1]}<div class="small">вероятность ${r[2]} · влияние ${r[3]}</div></td><td>${r[4]}</td></tr>`));
+})();
+
+/* active TOC link */
+(function(){
+  const links=[...document.querySelectorAll('nav.toc a')];const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const i=secs.indexOf(e.target);if(i>=0)links[i].classList.add('active')}})},{rootMargin:'-30% 0px -60% 0px'});
+  secs.forEach(s=>s&&io.observe(s));
+})();
+
+</script>
+</body>
+</html>
+
